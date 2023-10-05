@@ -7,7 +7,6 @@ import {
 import "./App.css";
 import Home from "./components/HomePage/Home";
 import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer";
 import Register from "./components/Nav/Register";
 import Login from "./components/Nav/Login";
 
@@ -24,8 +23,6 @@ function App() {
   return (
     <div>
       <RouterProvider router={router} />
-
-      <Footer></Footer>
     </div>
   );
 }

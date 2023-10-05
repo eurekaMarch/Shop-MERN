@@ -12,6 +12,7 @@ function Nav() {
         <Link to="/">
           <img width={60} src={Logo} alt="" />
         </Link>
+        <span>Shopeefy</span>
 
         <TextField
           id="filled-basic"
