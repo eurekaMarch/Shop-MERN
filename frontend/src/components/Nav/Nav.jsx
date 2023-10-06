@@ -3,40 +3,79 @@ import Logo from "/shopping.png";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Header from "./Header";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 function Nav() {
   return (
     <div>
       <nav>
         <Header />
-        <div>
-          <Link to="/">
-            <img width={60} src={Logo} alt="" />
-          </Link>
-          <span>Shopeefy</span>
-        </div>
-
-        <TextField
-          id="filled-basic"
-          placeholder="Search"
-          InputLabelProps={{ style: { fontSize: 20 } }}
-          inputProps={{ style: { fontSize: 16 } }}
-        />
-        <ThemeProvider theme={theme}>
-          <Button
-            variant="contained"
-            size="large"
-            style={{ fontSize: "1.6rem" }}
-            color="primary"
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            mt: "1rem",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              position: "relative",
+              width: "21rem",
+            }}
           >
-            Search
-          </Button>
-        </ThemeProvider>
+            <Link to="/">
+              <img width={70} src={Logo} alt="logo" />
+            </Link>
+            <Typography
+              sx={{
+                fontSize: "3rem",
+                fontWeight: "bold",
+                position: "absolute",
+                left: "6rem",
+              }}
+            >
+              Shopeefy
+            </Typography>
+          </Box>
 
-        <Link to="/register">REGISTER</Link>
-        <Link to="/login">LOGIN</Link>
+          <div>
+            <TextField
+              id="filled-basic"
+              placeholder="Search"
+              size="small"
+              sx={{
+                width: "40rem",
+              }}
+            />
+
+            <Button
+              variant="contained"
+              size="Normal"
+              color="black"
+              sx={{
+                color: "white",
+                fontSize: "1.6rem",
+                // fontFamily: "Poppins, sans-serif",
+              }}
+            >
+              Search
+            </Button>
+          </div>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "15rem",
+            }}
+          >
+            <Link to="/register">REGISTER</Link>
+            <Link to="/login">LOGIN</Link>
+          </Box>
+        </Box>
       </nav>
       <div>
         <Outlet />
@@ -46,11 +85,3 @@ function Nav() {
 }
 
 export default Nav;
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: grey[900],
-    },
-  },
-});

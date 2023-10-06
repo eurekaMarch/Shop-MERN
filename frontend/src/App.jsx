@@ -9,6 +9,8 @@ import Home from "./components/HomePage/Home";
 import Nav from "./components/Nav/Nav";
 import Register from "./components/Nav/Register";
 import Login from "./components/Nav/Login";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./components/ThemeMUI/theme";
 
 function App() {
   const router = createBrowserRouter(
@@ -21,9 +23,9 @@ function App() {
     )
   );
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <RouterProvider router={router} />
-    </div>
+    </ThemeProvider>
   );
 }
 
