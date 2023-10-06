@@ -29,17 +29,18 @@ function Nav() {
           >
             <Link to="/">
               <img width={70} src={Logo} alt="logo" />
+              <Typography
+                sx={{
+                  fontSize: "3rem",
+                  fontWeight: "bold",
+                  position: "absolute",
+                  left: "6rem",
+                  top: "1.5rem",
+                }}
+              >
+                Shopeefy
+              </Typography>
             </Link>
-            <Typography
-              sx={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                position: "absolute",
-                left: "6rem",
-              }}
-            >
-              Shopeefy
-            </Typography>
           </Box>
 
           <div>
@@ -59,7 +60,6 @@ function Nav() {
               sx={{
                 color: "white",
                 fontSize: "1.6rem",
-                // fontFamily: "Poppins, sans-serif",
               }}
             >
               Search

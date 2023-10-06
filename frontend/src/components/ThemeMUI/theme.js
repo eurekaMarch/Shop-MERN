@@ -1,10 +1,13 @@
-import { grey } from "@mui/material/colors";
+import { grey, lightGreen } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     black: {
       main: grey[900],
+    },
+    lightGreen: {
+      main: lightGreen[900],
     },
   },
   typography: {
