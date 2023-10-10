@@ -3,6 +3,10 @@ nav a {
   text-decoration: none;
 }
 
+.Nav_text-logo {
+  color: #5f8e3e;
+}
+
 @media (max-width: 900px) {
   .header__pc {
     display: none !important;
