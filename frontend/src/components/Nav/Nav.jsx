@@ -35,7 +35,7 @@ function Nav() {
     <div>
       <nav>
         <Header />
-        {/* <Box
+        {/* <Box className="Nav_PC"
           sx={{
             display: "flex",
             justifyContent: "space-around",
@@ -104,6 +104,7 @@ function Nav() {
 
         {/* mobile */}
         <Box
+          className="Nav_mobile"
           sx={{
             display: "flex",
             justifyContent: "space-around",
