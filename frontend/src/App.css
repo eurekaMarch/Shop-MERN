@@ -7,8 +7,42 @@ nav a {
   color: #5f8e3e;
 }
 
+.Nav_input {
+  padding-top: 5rem;
+}
+
 @media (max-width: 900px) {
   .header__pc {
+    display: none;
+  }
+
+  .Nav__input-pc {
+    display: none;
+  }
+
+  #Nav__register,
+  #Nav__login {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .Nav__pc {
+    display: none !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .Nav__input-mobile {
+    display: none;
+  }
+  .Nav__mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 767px) {
+  .Nav__mobile {
     display: none !important;
   }
 }
