@@ -7,10 +7,10 @@ import {
 import "./App.css";
 import Home from "./components/HomePage/Home";
 import Nav from "./components/Nav/Nav";
-import Register from "./components/Nav/Register";
-import Login from "./components/Nav/Login";
+import Register from "./components/LoginPage/RegisterPage";
+import Login from "./components/LoginPage/Login";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "./components/ThemeMUI/theme";
+import theme from "./Utils/theme";
 
 function App() {
   const router = createBrowserRouter(

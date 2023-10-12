@@ -1,7 +1,7 @@
 import { lightGreen } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Unstable_Grid2";
 import Link from "@mui/material/Link";
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
           textAlign: "center",
         }}
       >
-        <Grid container>
+        <Grid container xs={12} sm={12} md={12}>
           <Grid md={4} className="header__pc">
             <Typography>
               <i className="fa-solid fa-phone"></i> +668 1123 4567
