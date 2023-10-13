@@ -14,7 +14,6 @@ function Home() {
     );
   });
 
-  console.log(filterProducts);
   return (
     <div>
       <Box
@@ -30,7 +29,7 @@ function Home() {
         <Grid container xs={12} sm={12} md={12} spacing={3}>
           {filterProducts.map((product) => {
             return (
-              <Grid xs={12} sm={6} md={4} key={products.id}>
+              <Grid xs={12} sm={6} md={4} key={product.id}>
                 <Products product={product} />
               </Grid>
             );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import Logo from "/shopping.png";
+import Logo from "../../img/shopping.png";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Header from "./Header";
@@ -12,6 +12,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function Nav() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [search, setSearch] = useState();
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
@@ -69,7 +70,7 @@ function Nav() {
               </Link>
             </Box>
 
-            <div className="Nav__input-pc">
+            <form className="Nav__input-pc">
               <TextField
                 id="filled-basic"
                 placeholder="Search"
@@ -77,6 +78,9 @@ function Nav() {
                 sx={{
                   width: "40rem",
                 }}
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                type="text"
               />
 
               <Button
@@ -87,10 +91,11 @@ function Nav() {
                   fontSize: "1.6rem",
                   height: "5.5rem",
                 }}
+                type="submit"
               >
                 Search
               </Button>
-            </div>
+            </form>
 
             <div className="Nav__input-mobile">
               <TextField
