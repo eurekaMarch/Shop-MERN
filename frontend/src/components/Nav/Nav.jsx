@@ -10,9 +10,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-function Nav() {
+function Nav(value) {
+  const { product, setFilterSearch } = value;
+
   const [anchorEl, setAnchorEl] = useState(null);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
@@ -30,6 +32,15 @@ function Nav() {
 
   const handleRegister = () => {
     navigate(`/register`, { replace: true });
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    const filteredSearch = product.filter((element) => {
+      return element.title.toLowerCase().includes(search);
+    });
+    setFilterSearch(filteredSearch);
   };
 
   return (
@@ -70,7 +81,8 @@ function Nav() {
               </Link>
             </Box>
 
-            <form className="Nav__input-pc">
+            <form onSubmit={handleSearchSubmit} className="Nav__input-pc">
+              {/* <form className="Nav__input-pc"> */}
               <TextField
                 id="filled-basic"
                 placeholder="Search"
@@ -97,7 +109,7 @@ function Nav() {
               </Button>
             </form>
 
-            <div className="Nav__input-mobile">
+            <form onSubmit={handleSearchSubmit} className="Nav__input-mobile">
               <TextField
                 id="filled-basic"
                 placeholder="Search"
@@ -106,6 +118,8 @@ function Nav() {
                   width: "25rem",
                   fontSize: "1.2rem",
                 }}
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
               />
 
               <Button
@@ -116,10 +130,11 @@ function Nav() {
                   color: "white",
                   fontSize: "1.2rem",
                 }}
+                type="submit"
               >
                 Search
               </Button>
-            </div>
+            </form>
             <Box
               sx={{
                 display: "flex",
@@ -206,35 +221,40 @@ function Nav() {
             </Menu>
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mx: "3rem",
-            }}
-          >
-            <TextField
-              id="filled-basic"
-              placeholder="Search"
-              size="small"
+          <form onSubmit={handleSearchSubmit}>
+            <Box
               sx={{
-                width: "40rem",
-                fontSize: "1.4rem",
-              }}
-            />
-
-            <Button
-              variant="contained"
-              size="normal"
-              color="black"
-              sx={{
-                color: "white",
-                fontSize: "1.4rem",
+                display: "flex",
+                justifyContent: "center",
+                mx: "3rem",
               }}
             >
-              Search
-            </Button>
-          </Box>
+              <TextField
+                id="filled-basic"
+                placeholder="Search"
+                size="small"
+                sx={{
+                  width: "40rem",
+                  fontSize: "1.4rem",
+                }}
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+              />
+
+              <Button
+                variant="contained"
+                size="normal"
+                color="black"
+                sx={{
+                  color: "white",
+                  fontSize: "1.4rem",
+                }}
+                type="submit"
+              >
+                Search
+              </Button>
+            </Box>
+          </form>
         </div>
       </nav>
       <div>

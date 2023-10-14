@@ -11,6 +11,12 @@ nav a {
   padding-top: 5rem;
 }
 
+.Product__img {
+  max-width: 15rem;
+  height: 20rem;
+  padding-top: 2rem;
+}
+
 @media (max-width: 900px) {
   .header__pc {
     display: none;

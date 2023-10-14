@@ -6,6 +6,6 @@ const createAxios = (baseUrl) => {
   });
 };
 
-const productApi = createAxios("https://fakestoreapi.com/products");
+const productApi = createAxios("https://fakestoreapi.com/");
 
 export { productApi };
