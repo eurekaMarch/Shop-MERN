@@ -3,14 +3,6 @@ nav a {
   text-decoration: none;
 }
 
-.Nav_text-logo {
-  color: #5f8e3e;
-}
-
-.Nav_input {
-  padding-top: 5rem;
-}
-
 @media (max-width: 900px) {
   .header__pc {
     display: none;

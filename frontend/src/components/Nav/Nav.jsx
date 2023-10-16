@@ -67,13 +67,13 @@ function Nav(value) {
               <Link to="/">
                 <img width={70} src={Logo} alt="logo" />
                 <Typography
-                  className="Nav_text-logo"
                   sx={{
                     fontSize: "3rem",
                     fontWeight: "bold",
                     position: "absolute",
                     left: "6rem",
                     top: "1.5rem",
+                    color: "#5f8e3e",
                   }}
                 >
                   Shopeefy
@@ -82,7 +82,6 @@ function Nav(value) {
             </Box>
 
             <form onSubmit={handleSearchSubmit} className="Nav__input-pc">
-              {/* <form className="Nav__input-pc"> */}
               <TextField
                 id="filled-basic"
                 placeholder="Search"
@@ -172,13 +171,13 @@ function Nav(value) {
               <Link to="/">
                 <img width={60} src={Logo} alt="logo" />
                 <Typography
-                  className="Nav_text-logo"
                   sx={{
                     fontSize: "1.6rem",
                     fontWeight: "bold",
                     position: "absolute",
                     left: "5.5rem",
                     top: "2rem",
+                    color: "#5f8e3e",
                   }}
                 >
                   Shopeefy
