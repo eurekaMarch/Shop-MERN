@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function Nav(value) {
-  const { product, setFilterSearch } = value;
+  const { data, setProducts } = value;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [search, setSearch] = useState("");
@@ -37,10 +37,10 @@ function Nav(value) {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
 
-    const filteredSearch = product.filter((element) => {
+    const filteredSearch = data.filter((element) => {
       return element.title.toLowerCase().includes(search);
     });
-    setFilterSearch(filteredSearch);
+    setProducts(filteredSearch);
   };
 
   return (
@@ -91,7 +91,6 @@ function Nav(value) {
                   width: "40rem",
                 }}
                 onChange={(e) => setSearch(e.target.value)}
-                value={search}
                 type="text"
               />
 
@@ -99,7 +98,6 @@ function Nav(value) {
                 variant="contained"
                 color="black"
                 sx={{
-                  color: "white",
                   fontSize: "1.6rem",
                   height: "5.5rem",
                 }}
@@ -127,7 +125,6 @@ function Nav(value) {
                 color="black"
                 size="normal"
                 sx={{
-                  color: "white",
                   fontSize: "1.2rem",
                 }}
                 type="submit"
@@ -246,7 +243,6 @@ function Nav(value) {
                 size="normal"
                 color="black"
                 sx={{
-                  color: "white",
                   fontSize: "1.4rem",
                 }}
                 type="submit"

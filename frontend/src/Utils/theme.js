@@ -5,6 +5,8 @@ const theme = createTheme({
   palette: {
     black: {
       main: grey[900],
+      dark: grey[900],
+      contrastText: "#fff",
     },
     lightGreen: {
       main: lightGreen[900],

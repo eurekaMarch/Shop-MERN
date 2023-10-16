@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Box from "@mui/material/Box";
+
 import CardMedia from "@mui/material/CardMedia";
 
 function Products(value) {
@@ -12,19 +12,16 @@ function Products(value) {
     <div>
       <CardActionArea>
         <Card sx={{ textAlign: "center", height: "32rem" }}>
-          <img className="Product__img" src={product.image} alt="" />
-
-          {/* <CardMedia
+          <CardMedia
             component="img"
             image={product.image}
             sx={{
-              maxWidth: 150,
-              maxHeight: 300,
+              height: "20rem",
               pt: "2rem",
               m: "auto",
+              objectFit: "contain",
             }}
-            className="Product__img"
-          /> */}
+          />
           <CardContent sx={{ textAlign: "left" }}>
             <Typography gutterBottom>{product.category}</Typography>
             <Typography
