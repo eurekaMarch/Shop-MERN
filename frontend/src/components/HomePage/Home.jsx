@@ -37,7 +37,6 @@ function Home(values) {
         <Box
           sx={{
             flexGrow: 1,
-
             mt: "3rem",
             mx: "6rem",
           }}
