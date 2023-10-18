@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Footer from "../Footer/Footer";
+import Footer from "./Footer";
 import Products from "./Products";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -38,7 +38,8 @@ function Home(values) {
           sx={{
             flexGrow: 1,
             mt: "3rem",
-            mx: "6rem",
+            ml: "6rem",
+            mr: "3rem",
           }}
         >
           <Grid container xs={12} sm={12} md={12} spacing={3}>
@@ -63,9 +64,9 @@ function Home(values) {
               />
             </Stack>
           </Box>
-          <Footer />
         </Box>
       )}
+      <Footer />
     </div>
   );
 }

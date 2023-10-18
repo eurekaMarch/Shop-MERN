@@ -9,7 +9,7 @@ function Header() {
     <div>
       <Box
         sx={{
-          backgroundColor: lightGreen[600],
+          bgcolor: lightGreen[600],
           height: "4rem",
           color: "white",
           py: 1,

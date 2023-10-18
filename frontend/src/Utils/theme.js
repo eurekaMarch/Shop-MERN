@@ -8,7 +8,7 @@ const theme = createTheme({
       dark: grey[900],
       contrastText: "#fff",
     },
-    lightGreen1: {
+    lightGreen2: {
       main: lightGreen[900],
     },
   },

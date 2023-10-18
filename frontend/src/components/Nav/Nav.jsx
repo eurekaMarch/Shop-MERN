@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import Logo from "../../img/shopping.png";
+import Logo from "../../assets/shopping.png";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Header from "./Header";
