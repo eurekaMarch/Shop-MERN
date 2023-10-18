@@ -1,6 +1,5 @@
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { grey } from "@mui/material/colors";
 import cloth from "../../assets/cloth2.jpg";
 import InputBase from "@mui/material/InputBase";
@@ -26,41 +25,46 @@ function Newsletter() {
           <div className="Newsletter__font">Sign up To Our Newsletters </div>
         </Typography>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            mx: "1rem",
-          }}
-        >
-          <InputBase
+        <form>
+          <Box
             sx={{
-              width: "40rem",
-              border: "none",
-              input: {
-                background: "white",
-                borderRadius: 5,
-                pl: "1rem",
-                height: "3rem",
-                fontSize: "1.4rem",
-              },
+              display: "flex",
+              justifyContent: "center",
+              mx: "1rem",
             }}
-            type="email"
-            placeholder="Your Email Address..."
-          />
-          <Button
-            variant="contained"
-            color="green"
-            sx={{
-              fontSize: "1.4rem",
-              borderRadius: 5,
-              height: "4rem",
-            }}
-            type="submit"
           >
-            Subscribe
-          </Button>
-        </Box>
+            <InputBase
+              sx={{
+                width: "40rem",
+                input: {
+                  background: "white",
+                  borderRadius: 5,
+                  pl: "1rem",
+                  height: "3rem",
+                  fontSize: "1.4rem",
+                },
+              }}
+              type="email"
+              placeholder="Your Email Address..."
+            />
+            <InputBase
+              sx={{
+                width: "10rem",
+                input: {
+                  background: "#1CB803",
+                  borderRadius: 5,
+                  height: "3rem",
+                  fontSize: "1.4rem",
+                  fontWeight: 600,
+                  color: "white",
+                  cursor: "pointer",
+                },
+              }}
+              type="submit"
+              value="SUBSCRIBE"
+            ></InputBase>
+          </Box>
+        </form>
       </Box>
     </Box>
   );
