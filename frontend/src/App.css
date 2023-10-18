@@ -24,6 +24,12 @@ nav a {
   }
 }
 
+@media (max-width: 400px) {
+  .Newsletter__font {
+    font-size: 2.1rem;
+  }
+}
+
 @media (min-width: 900px) {
   .Nav__input-mobile {
     display: none;

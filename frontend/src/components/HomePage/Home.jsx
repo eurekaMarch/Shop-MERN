@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "./Footer";
+import Newsletter from "./Newsletter";
 import Products from "./Products";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -66,6 +67,8 @@ function Home(values) {
           </Box>
         </Box>
       )}
+
+      <Newsletter />
       <Footer />
     </div>
   );
