@@ -1,5 +1,5 @@
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
 import cloth from "../../assets/cloth2.jpg";
 import InputBase from "@mui/material/InputBase";
@@ -9,33 +9,29 @@ function Newsletter() {
     <Box sx={{ mt: "5rem", height: "35rem" }}>
       <Box
         sx={{
-          width: "100%",
           height: "35rem",
           backgroundImage: `url(${cloth})`,
-          backgroundPosition: "100% 80%",
+          backgroundPosition: "0% 80%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundColor: grey[400],
           backgroundBlendMode: "multiply",
           textAlign: "center",
-          pt: "12rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
         <Typography sx={{ color: "white", mb: "3rem", fontSize: "3rem" }}>
-          <div className="Newsletter__font">Sign up To Our Newsletters </div>
+          Sign up To Our Newsletters
         </Typography>
 
-        <form>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mx: "1rem",
-            }}
-          >
+        <Box sx={{ width: "100%" }}>
+          <form>
             <InputBase
               sx={{
-                width: "40rem",
+                width: "40%",
                 input: {
                   background: "white",
                   borderRadius: 5,
@@ -46,10 +42,12 @@ function Newsletter() {
               }}
               type="email"
               placeholder="Your Email Address..."
+              id="Newsletter__input"
             />
+
             <InputBase
               sx={{
-                width: "10rem",
+                width: "8%",
                 input: {
                   background: "#1CB803",
                   borderRadius: 5,
@@ -58,13 +56,16 @@ function Newsletter() {
                   fontWeight: 600,
                   color: "white",
                   cursor: "pointer",
+                  px: "4rem",
+                  display: "flex",
+                  justifyContent: "center",
                 },
               }}
               type="submit"
               value="SUBSCRIBE"
             ></InputBase>
-          </Box>
-        </form>
+          </form>
+        </Box>
       </Box>
     </Box>
   );

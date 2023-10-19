@@ -16,7 +16,7 @@ function Home(values) {
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
-  const filtered = products.filter((item) => {
+  const filterProduct = products.filter((item) => {
     return (
       item.category === "men's clothing" || item.category === "women's clothing"
     );
@@ -26,7 +26,7 @@ function Home(values) {
     setCurrentPage(value);
   };
 
-  const countPage = Math.ceil(filtered.length / cardPerPage);
+  const countPage = Math.ceil(filterProduct.length / cardPerPage);
 
   return (
     <div>
@@ -44,7 +44,7 @@ function Home(values) {
           }}
         >
           <Grid container xs={12} sm={12} md={12} spacing={3}>
-            {filtered
+            {filterProduct
               .slice(indexOfFirstCard, indexOfLastCard)
               .map((product) => {
                 return (

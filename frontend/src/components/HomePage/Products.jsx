@@ -11,18 +11,18 @@ function Products(value) {
   return (
     <div>
       <CardActionArea>
-        <Card sx={{ textAlign: "center", height: "32rem" }}>
+        <Card sx={{ textAlign: "center", minHeight: "32rem" }}>
           <CardMedia
             component="img"
             image={product.image}
             sx={{
               height: "20rem",
               pt: "2rem",
-              m: "auto",
+              px: "2rem",
               objectFit: "contain",
             }}
           />
-          <CardContent sx={{ textAlign: "left" }}>
+          <CardContent sx={{ textAlign: "left" }} id="Products__cardContent">
             <Typography gutterBottom>{product.category}</Typography>
             <Typography
               gutterBottom

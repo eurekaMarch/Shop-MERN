@@ -25,10 +25,10 @@ function Footer() {
           <img src={visa} alt="" height={"15rem"} />
         </Box>
         <Box sx={{ pr: "2rem" }}>
-          <img src={paypal} alt="" height={"15rem"} />
+          <img src={paypal} alt="" height={"20rem"} />
         </Box>
         <Box>
-          <img src={amex} alt="" height={"30rem"} />
+          <img src={amex} alt="" height={"25rem"} />
         </Box>
       </Box>
 

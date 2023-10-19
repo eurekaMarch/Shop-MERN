@@ -3,6 +3,10 @@ nav a {
   text-decoration: none;
 }
 
+#Products__cardContent {
+  padding-bottom: 0;
+}
+
 @media (max-width: 900px) {
   .header__pc {
     display: none;
@@ -16,6 +20,10 @@ nav a {
   #Nav__login {
     font-size: 1.2rem;
   }
+
+  #Nav__cart {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -25,8 +33,8 @@ nav a {
 }
 
 @media (max-width: 400px) {
-  .Newsletter__font {
-    font-size: 2.1rem;
+  #Newsletter__input {
+    font-size: 1rem;
   }
 }
 
