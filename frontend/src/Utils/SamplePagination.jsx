@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Footer from "./Footer";
-import Newsletter from "./Newsletter";
-import Products from "./Products";
+import Footer from "../components/HomePage/Footer";
+import Newsletter from "../components/HomePage/Newsletter";
+import Products from "../components/HomePage/Products";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
