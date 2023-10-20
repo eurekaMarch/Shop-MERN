@@ -27,7 +27,7 @@ nav a {
 }
 
 @media (max-width: 767px) {
-  .Nav__pc {
+  #Nav__pc {
     display: none !important;
   }
 }
@@ -35,6 +35,15 @@ nav a {
 @media (max-width: 400px) {
   #Newsletter__input {
     font-size: 1rem;
+  }
+
+  #Home__font {
+    font-size: 1.2rem;
+  }
+
+  #Home__cardMedia {
+    width: 10rem;
+    height: 10rem;
   }
 }
 

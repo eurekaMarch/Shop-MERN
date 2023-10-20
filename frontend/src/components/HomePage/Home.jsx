@@ -8,6 +8,10 @@ import Grid from "@mui/material/Unstable_Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { grey } from "@mui/material/colors";
+import searchImage from "../../assets/searchEmpty.png";
 
 function Home(values) {
   const { products, loading } = values;
@@ -37,7 +41,7 @@ function Home(values) {
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           <CircularProgress color="success" />
         </Box>
-      ) : (
+      ) : products.length > 0 ? (
         <Box
           sx={{
             flexGrow: 1,
@@ -55,6 +59,7 @@ function Home(values) {
               );
             })}
           </Grid>
+
           <Box sx={{ display: "flex", justifyContent: "center", mt: "2rem" }}>
             <Stack spacing={2}>
               <Pagination
@@ -66,6 +71,35 @@ function Home(values) {
               />
             </Stack>
           </Box>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            height: "70vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+          id="Home__font"
+        >
+          <CardMedia
+            component="img"
+            image={searchImage}
+            sx={{
+              height: "12rem",
+              width: "12rem",
+            }}
+            id="Home__cardMedia"
+          />
+
+          <Typography gutterBottom sx={{ textAlign: "center" }}>
+            No results found
+          </Typography>
+
+          <Typography sx={{ color: grey[600], textAlign: "center" }}>
+            Try different or more general keywords
+          </Typography>
         </Box>
       )}
 

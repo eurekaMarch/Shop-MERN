@@ -51,115 +51,116 @@ function Nav(value) {
     <div>
       <nav>
         <Header />
-        <div className="Nav__pc">
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            mt: "1rem",
+          }}
+          id="Nav__pc"
+        >
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-around",
               alignItems: "center",
-              mt: "1rem",
+              position: "relative",
+              width: "21rem",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                position: "relative",
-                width: "21rem",
-              }}
-            >
-              <Link to="/">
-                <img width={70} src={Logo} alt="logo" />
-                <Typography
-                  sx={{
-                    fontSize: "3rem",
-                    fontWeight: "bold",
-                    position: "absolute",
-                    left: "6rem",
-                    top: "1.5rem",
-                    color: "#5f8e3e",
-                  }}
-                >
-                  Shopeefy
-                </Typography>
-              </Link>
-            </Box>
-
-            <form onSubmit={handleSearchSubmit} className="Nav__input-pc">
-              <TextField
-                id="filled-basic"
-                placeholder="Search"
-                size="normal"
+            <Link to="/">
+              <img width={70} src={Logo} alt="logo" />
+              <Typography
                 sx={{
-                  width: "35rem",
+                  fontSize: "3rem",
+                  fontWeight: "bold",
+                  position: "absolute",
+                  left: "6rem",
+                  top: "1.5rem",
+                  color: "#5f8e3e",
                 }}
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-              />
-
-              <Button
-                variant="contained"
-                color="black"
-                sx={{
-                  fontSize: "1.6rem",
-                  height: "5.5rem",
-                }}
-                type="submit"
               >
-                Search
-              </Button>
-            </form>
-
-            <form onSubmit={handleSearchSubmit} className="Nav__input-mobile">
-              <TextField
-                id="filled-basic"
-                placeholder="Search"
-                size="small"
-                sx={{
-                  width: "25rem",
-                  fontSize: "1.2rem",
-                }}
-                onChange={(e) => setSearch(e.target.value)}
-                value={search}
-              />
-
-              <Button
-                variant="contained"
-                color="black"
-                size="normal"
-                sx={{
-                  fontSize: "1.2rem",
-                }}
-                type="submit"
-              >
-                Search
-              </Button>
-            </form>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "20rem",
-                mr: "3rem",
-              }}
-            >
-              <Link to="/register" id="Nav__register">
-                REGISTER
-              </Link>
-              <Link to="/login" id="Nav__login">
-                LOGIN
-              </Link>
-
-              <Badge badgeContent={10} showZero>
-                <i
-                  className="fa-solid fa-cart-shopping fa-lg "
-                  id="Nav__cart"
-                ></i>
-              </Badge>
-            </Box>
+                Shopeefy
+              </Typography>
+            </Link>
           </Box>
-        </div>
+
+          <form onSubmit={handleSearchSubmit} className="Nav__input-pc">
+            <TextField
+              id="filled-basic"
+              placeholder="Search"
+              size="normal"
+              sx={{
+                width: "35rem",
+              }}
+              onChange={(e) => setSearch(e.target.value)}
+              type="text"
+            />
+
+            <Button
+              variant="contained"
+              color="black"
+              sx={{
+                fontSize: "1.6rem",
+                height: "5.5rem",
+              }}
+              type="submit"
+            >
+              Search
+            </Button>
+          </form>
+
+          <form onSubmit={handleSearchSubmit} className="Nav__input-mobile">
+            <TextField
+              id="filled-basic"
+              placeholder="Search"
+              size="small"
+              sx={{
+                width: "25rem",
+                fontSize: "1.2rem",
+              }}
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+
+            <Button
+              variant="contained"
+              color="black"
+              size="normal"
+              sx={{
+                fontSize: "1.2rem",
+              }}
+              type="submit"
+            >
+              Search
+            </Button>
+          </form>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "20rem",
+              mr: "3rem",
+            }}
+          >
+            <Link to="/register" id="Nav__register">
+              REGISTER
+            </Link>
+            <Link to="/login" id="Nav__login">
+              LOGIN
+            </Link>
+
+            <Badge badgeContent={10} showZero>
+              <i
+                className="fa-solid fa-cart-shopping fa-lg "
+                id="Nav__cart"
+              ></i>
+            </Badge>
+          </Box>
+        </Box>
 
         {/* mobile */}
         <div className="Nav__mobile">
@@ -172,6 +173,7 @@ function Nav(value) {
               mr: "1.6rem",
               ml: "0.8rem",
             }}
+            id="Nav__mobile"
           >
             <Box
               sx={{
@@ -231,7 +233,7 @@ function Nav(value) {
                 <MenuItem onClick={handleLogin}>LOGIN</MenuItem>
               </Menu>
 
-              <Badge badgeContent={0} showZero sx={{ ml: "2rem" }}>
+              <Badge badgeContent={0} showZero sx={{ ml: "1rem" }}>
                 <i className="fa-solid fa-cart-shopping fa-lg "></i>
               </Badge>
             </Box>
