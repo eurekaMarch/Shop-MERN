@@ -41,7 +41,7 @@ function Home(values) {
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           <CircularProgress color="success" />
         </Box>
-      ) : products.length > 0 ? (
+      ) : filterProduct.length > 0 ? (
         <Box
           sx={{
             flexGrow: 1,

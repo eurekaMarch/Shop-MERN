@@ -7,6 +7,10 @@ nav a {
   padding-bottom: 0;
 }
 
+.css-u5o34-MuiSvgIcon-root-MuiPaginationItem-icon {
+  font-size: 1.6rem;
+}
+
 @media (max-width: 900px) {
   .header__pc {
     display: none;
