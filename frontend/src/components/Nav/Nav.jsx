@@ -17,7 +17,7 @@ function Nav(value) {
   const { data, setProducts } = value;
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(undefined);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
