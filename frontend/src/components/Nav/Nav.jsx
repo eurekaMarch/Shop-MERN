@@ -44,6 +44,7 @@ function Nav(value) {
       return element.title.toLowerCase().includes(search);
     });
     setProducts(filteredSearch);
+    navigate(`/`);
   };
 
   return (
@@ -150,7 +151,7 @@ function Nav(value) {
                 LOGIN
               </Link>
 
-              <Badge badgeContent={0} showZero>
+              <Badge badgeContent={10} showZero>
                 <i
                   className="fa-solid fa-cart-shopping fa-lg "
                   id="Nav__cart"
