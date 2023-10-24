@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Badge as BaseBadge, badgeClasses } from "@mui/base/Badge";
 import { styled } from "@mui/system";
-import { red } from "@mui/material/colors";
+import { red, grey } from "@mui/material/colors";
 
 function Nav(value) {
   const { data, setProducts } = value;
@@ -147,10 +147,10 @@ function Nav(value) {
             }}
           >
             <Link to="/register" id="Nav__register">
-              REGISTER
+              <Typography sx={{ color: grey[900] }}>REGISTER</Typography>
             </Link>
             <Link to="/login" id="Nav__login">
-              LOGIN
+              <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
             </Link>
 
             <Badge badgeContent={10} showZero>
