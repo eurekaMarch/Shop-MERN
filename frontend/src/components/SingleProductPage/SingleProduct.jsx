@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
-function SingleProductPage() {
+function SingleProduct() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [searchParams] = useSearchParams();
@@ -20,8 +22,16 @@ function SingleProductPage() {
   }, [id]);
 
   return (
-    <div>{loading ? <div>Success</div> : <img src={data.image}></img>}</div>
+    <div>
+      {loading ? (
+        <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
+          <CircularProgress color="success" />
+        </Box>
+      ) : (
+        <img src={data.image}></img>
+      )}
+    </div>
   );
 }
 
-export default SingleProductPage;
+export default SingleProduct;

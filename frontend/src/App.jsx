@@ -11,7 +11,7 @@ import Home from "./components/HomePage/Home";
 import Nav from "./components/Nav/Nav";
 import Register from "./components/LoginPage/Register";
 import Login from "./components/LoginPage/Login";
-import SingleProductPage from "./components/SingleProductPage/SingleProductPage";
+import SingleProduct from "./components/SingleProductPage/SingleProduct";
 import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "./Utils/theme";
@@ -39,7 +39,7 @@ function App() {
         <Route index element={<Home products={products} loading={loading} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/products" element={<SingleProductPage />} />
+        <Route path="/products" element={<SingleProduct />} />
       </Route>
     )
   );
