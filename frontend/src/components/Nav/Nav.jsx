@@ -21,6 +21,8 @@ function Nav(value) {
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
+  const count = 10;
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -88,7 +90,6 @@ function Nav(value) {
 
           <form onSubmit={handleSearchSubmit} className="Nav__input-pc">
             <TextField
-              id="filled-basic"
               placeholder="Search"
               size="normal"
               sx={{
@@ -113,7 +114,6 @@ function Nav(value) {
 
           <form onSubmit={handleSearchSubmit} className="Nav__input-mobile">
             <TextField
-              id="filled-basic"
               placeholder="Search"
               size="small"
               sx={{
@@ -130,6 +130,7 @@ function Nav(value) {
               size="normal"
               sx={{
                 fontSize: "1.2rem",
+                width: "4rem",
               }}
               type="submit"
             >
@@ -153,7 +154,7 @@ function Nav(value) {
               <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
             </Link>
 
-            <Badge badgeContent={10} showZero>
+            <Badge badgeContent={count} showZero>
               <i
                 className="fa-solid fa-cart-shopping fa-lg "
                 id="Nav__cart"
@@ -233,7 +234,7 @@ function Nav(value) {
                 <MenuItem onClick={handleLogin}>LOGIN</MenuItem>
               </Menu>
 
-              <Badge badgeContent={0} showZero sx={{ ml: "1rem" }}>
+              <Badge badgeContent={count} showZero sx={{ ml: "1rem" }}>
                 <i className="fa-solid fa-cart-shopping fa-lg "></i>
               </Badge>
             </Box>
@@ -248,7 +249,6 @@ function Nav(value) {
               }}
             >
               <TextField
-                id="filled-basic"
                 placeholder="Search"
                 size="small"
                 sx={{

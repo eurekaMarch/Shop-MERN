@@ -15,6 +15,10 @@ const theme = createTheme({
       main: "#1CB803",
       contrastText: "#fff",
     },
+    lightGreen600: {
+      main: lightGreen[600],
+      contrastText: "#fff",
+    },
   },
   typography: {
     fontFamily: "Poppins, sans-serif",

@@ -105,6 +105,7 @@ function Home(values) {
 
       <Newsletter />
       <Footer />
+      <div>{products.id}</div>
     </div>
   );
 }

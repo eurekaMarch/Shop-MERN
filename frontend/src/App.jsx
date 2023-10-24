@@ -9,7 +9,7 @@ import axios from "axios";
 import "./App.css";
 import Home from "./components/HomePage/Home";
 import Nav from "./components/Nav/Nav";
-import Register from "./components/LoginPage/RegisterPage";
+import Register from "./components/LoginPage/Register";
 import Login from "./components/LoginPage/Login";
 import SingleProductPage from "./components/SingleProductPage/SingleProductPage";
 import { ThemeProvider } from "@mui/material/styles";
@@ -39,7 +39,7 @@ function App() {
         <Route index element={<Home products={products} loading={loading} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/products/:id" element={<SingleProductPage />} />
+        <Route path="/products" element={<SingleProductPage />} />
       </Route>
     )
   );

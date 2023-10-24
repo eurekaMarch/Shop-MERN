@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-
 import { CardActionArea } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 
@@ -12,7 +11,7 @@ function Products(value) {
   return (
     <div>
       <CardActionArea>
-        <Link to={`/products/${product.id}`}>
+        <Link to={`/products?id=${product.id}`}>
           <Card sx={{ textAlign: "center", minHeight: "32rem" }}>
             <CardMedia
               component="img"

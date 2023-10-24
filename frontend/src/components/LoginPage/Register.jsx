@@ -8,11 +8,12 @@ import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
 
-function Login() {
+function Register() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLogin = (data) => {
+  const onRegister = (data) => {
     console.log(data);
   };
 
@@ -45,6 +46,26 @@ function Login() {
             }}
           >
             <form>
+              <InputBase
+                type="text"
+                placeholder="Username"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                sx={{
+                  pt: "3rem",
+                  px: "3rem",
+                  width: "100%",
+                  input: {
+                    background: "white",
+                    pl: "1rem",
+                    height: "5rem",
+
+                    border: 1,
+                    borderRadius: 1.2,
+                    borderColor: grey[300],
+                  },
+                }}
+              ></InputBase>
               <InputBase
                 type="email"
                 placeholder="Email"
@@ -91,19 +112,20 @@ function Login() {
                 size="normal"
                 sx={{ width: "10rem", my: "2rem", fontSize: "1.6rem" }}
                 onClick={() =>
-                  onLogin({
+                  onRegister({
+                    username: name,
                     email,
                     password,
                   })
                 }
               >
-                login
+                Register
               </Button>
             </form>
 
-            <Link to="/register">
+            <Link to="/login">
               <Typography sx={{ color: grey[600], mb: "3rem" }}>
-                Create Account
+                I Have Account <strong>Login</strong>
               </Typography>
             </Link>
           </Paper>
@@ -113,4 +135,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
