@@ -22,7 +22,7 @@ function Footer() {
           <img src={masterCard} alt="" height={"30rem"} />
         </Box>
         <Box sx={{ pr: "2rem" }}>
-          <img src={visa} alt="" height={"15rem"} />
+          <img src={visa} alt="" height={"17rem"} />
         </Box>
         <Box sx={{ pr: "2rem" }}>
           <img src={paypal} alt="" height={"20rem"} />
