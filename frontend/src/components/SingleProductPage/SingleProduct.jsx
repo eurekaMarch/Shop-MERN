@@ -1,34 +1,56 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import axios from "axios";
+import { productApi } from "../../Utils/axios";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
+const initial = {
+  data: [],
+  loading: false,
+  error: null,
+};
+
 function SingleProduct() {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [state, setState] = useState(initial);
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
 
+  const fetchProduct = async (id) => {
+    setState((prev) => ({
+      ...prev,
+      loading: true,
+    }));
+    let products;
+    let fetchError;
+
+    try {
+      const productResponse = await productApi.get(`products/${id}`);
+
+      products = await productResponse?.data;
+    } catch (error) {
+      fetchError = error;
+    }
+
+    setState((prev) => ({
+      ...prev,
+      data: products,
+      loading: false,
+      error: fetchError,
+    }));
+  };
+
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+    id && fetchProduct(id);
   }, [id]);
 
   return (
     <div>
-      {loading ? (
+      {state.loading ? (
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           <CircularProgress color="success" />
         </Box>
       ) : (
-        <img src={data.image}></img>
+        <img src={state.data.image}></img>
       )}
     </div>
   );
