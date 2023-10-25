@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Footer from "./Footer";
 import Newsletter from "./Newsletter";
 import Products from "./Products";
-import usePagination from "./usePagination";
+import usePagination from "../../Utils/usePagination";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
