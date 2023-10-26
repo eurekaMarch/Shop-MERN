@@ -5,21 +5,22 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const initial = {
-  data: [],
+  product: [],
   loading: false,
   error: null,
 };
 
 function SingleProduct() {
-  const [state, setState] = useState(initial);
+  const [productItem, setProductItem] = useState(initial);
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
 
   const fetchProduct = async (id) => {
-    setState((prev) => ({
+    setProductItem((prev) => ({
       ...prev,
       loading: true,
     }));
+
     let products;
     let fetchError;
 
@@ -31,9 +32,9 @@ function SingleProduct() {
       fetchError = error;
     }
 
-    setState((prev) => ({
+    setProductItem((prev) => ({
       ...prev,
-      data: products,
+      product: products,
       loading: false,
       error: fetchError,
     }));
@@ -45,12 +46,12 @@ function SingleProduct() {
 
   return (
     <div>
-      {state.loading ? (
+      {productItem.loading ? (
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           <CircularProgress color="success" />
         </Box>
       ) : (
-        <img src={state.data.image}></img>
+        <img src={productItem.product.image}></img>
       )}
     </div>
   );

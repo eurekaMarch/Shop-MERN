@@ -17,11 +17,11 @@ function Nav(value) {
   const { data, setProducts } = value;
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [search, setSearch] = useState(undefined);
+  const [search, setSearch] = useState("");
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
-  const count = 10;
+  const amount = 10;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -154,7 +154,7 @@ function Nav(value) {
               <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
             </Link>
 
-            <Badge badgeContent={count} showZero>
+            <Badge badgeContent={amount} showZero>
               <i
                 className="fa-solid fa-cart-shopping fa-lg "
                 id="Nav__cart"
@@ -234,7 +234,7 @@ function Nav(value) {
                 <MenuItem onClick={handleLogin}>LOGIN</MenuItem>
               </Menu>
 
-              <Badge badgeContent={count} showZero sx={{ ml: "1rem" }}>
+              <Badge badgeContent={amount} showZero sx={{ ml: "1rem" }}>
                 <i className="fa-solid fa-cart-shopping fa-lg "></i>
               </Badge>
             </Box>
