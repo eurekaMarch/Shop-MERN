@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
+import { grey } from "@mui/material/colors";
 
 function Products(value) {
   const { product } = value;
@@ -24,7 +25,9 @@ function Products(value) {
               }}
             />
             <CardContent sx={{ textAlign: "left" }} id="Products__cardContent">
-              <Typography gutterBottom>{product.category}</Typography>
+              <Typography gutterBottom sx={{ color: grey[600] }}>
+                {product.category}
+              </Typography>
               <Typography
                 gutterBottom
                 sx={{ fontWeight: "bold", fontSize: "1.2rem" }}
