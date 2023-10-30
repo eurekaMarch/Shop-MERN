@@ -154,12 +154,14 @@ function Nav(value) {
               <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
             </Link>
 
-            <Badge badgeContent={amountProduct} showZero>
-              <i
-                className="fa-solid fa-cart-shopping fa-lg "
-                id="Nav__cart"
-              ></i>
-            </Badge>
+            <Link to="/cart">
+              <Badge badgeContent={amountProduct} showZero>
+                <i
+                  className="fa-solid fa-cart-shopping fa-lg "
+                  id="Nav__cart"
+                ></i>
+              </Badge>
+            </Link>
           </Box>
         </Box>
 

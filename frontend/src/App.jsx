@@ -78,7 +78,7 @@ function App() {
 
   // const removeFromCart = (product) => {
   //   const newProduct = cartProduct.filter(
-  //     (addedItem) => addedItem.id !== product.id
+  //     (addedProduct) => addedProduct.id !== product.id
   //   );
   //   setCartProduct(newProduct);
   // };

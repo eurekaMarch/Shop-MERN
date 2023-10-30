@@ -18,7 +18,6 @@ const initial = {
 
 function SingleProduct(value) {
   const { addToCart, amountItem, setAmountItem } = value;
-  // const [amountItem, setAmountItem] = useState(1);
   const [productItem, setProductItem] = useState(initial);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
