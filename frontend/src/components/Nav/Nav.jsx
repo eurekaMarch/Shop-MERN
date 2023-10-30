@@ -14,14 +14,14 @@ import { styled } from "@mui/system";
 import { red, grey } from "@mui/material/colors";
 
 function Nav(value) {
-  const { data, setProducts } = value;
+  const { data, setProducts, cartProduct } = value;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [search, setSearch] = useState("");
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
-  const amount = 10;
+  const amountProduct = cartProduct.length === 0 ? 0 : cartProduct.length;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -154,7 +154,7 @@ function Nav(value) {
               <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
             </Link>
 
-            <Badge badgeContent={amount} showZero>
+            <Badge badgeContent={amountProduct} showZero>
               <i
                 className="fa-solid fa-cart-shopping fa-lg "
                 id="Nav__cart"
@@ -234,7 +234,7 @@ function Nav(value) {
                 <MenuItem onClick={handleLogin}>LOGIN</MenuItem>
               </Menu>
 
-              <Badge badgeContent={amount} showZero sx={{ ml: "1rem" }}>
+              <Badge badgeContent={amountProduct} showZero sx={{ ml: "1rem" }}>
                 <i className="fa-solid fa-cart-shopping fa-lg "></i>
               </Badge>
             </Box>

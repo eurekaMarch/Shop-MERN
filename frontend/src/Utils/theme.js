@@ -1,4 +1,4 @@
-import { grey, lightGreen } from "@mui/material/colors";
+import { grey, lightGreen, red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -17,6 +17,10 @@ const theme = createTheme({
     },
     lightGreen600: {
       main: lightGreen[600],
+      contrastText: "#fff",
+    },
+    red500: {
+      main: red[500],
       contrastText: "#fff",
     },
   },

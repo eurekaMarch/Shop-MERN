@@ -16,9 +16,11 @@ const initial = {
   error: null,
 };
 
-function SingleProduct() {
-  const [amount, setAmount] = useState(1);
+function SingleProduct(value) {
+  const { addToCart } = value;
+  const [amountItem, setAmountItem] = useState(1);
   const [productItem, setProductItem] = useState(initial);
+  // const [isAdded, setIsAdded] = useState(true);
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
 
@@ -136,7 +138,7 @@ function SingleProduct() {
                       justifyContent: "center",
                       alignItems: "center",
                     }}
-                    onClick={() => setAmount(Math.max(amount - 1, 1))}
+                    onClick={() => setAmountItem(Math.max(amountItem - 1, 1))}
                   >
                     <i
                       className="fa-solid fa-minus"
@@ -155,7 +157,7 @@ function SingleProduct() {
                     alignItems: "center",
                   }}
                 >
-                  {amount}
+                  {amountItem}
                 </Card>
 
                 <CardActionArea sx={{ width: "3rem" }}>
@@ -168,7 +170,7 @@ function SingleProduct() {
                       justifyContent: "center",
                       alignItems: "center",
                     }}
-                    onClick={() => setAmount(amount + 1)}
+                    onClick={() => setAmountItem(amountItem + 1)}
                   >
                     <i
                       className="fa-solid fa-plus"
@@ -186,6 +188,7 @@ function SingleProduct() {
                   height: "5rem",
                   mb: "2rem",
                 }}
+                onClick={() => addToCart(productItem.product)}
               >
                 Add to cart
               </Button>

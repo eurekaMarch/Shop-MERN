@@ -24,6 +24,7 @@ const initial = {
 function App() {
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
+  const [cartProduct, setCartProduct] = useState([]);
 
   const fetchProduct = async () => {
     setState((prev) => ({
@@ -51,6 +52,33 @@ function App() {
     setProducts(products);
   };
 
+  const addToCart = (product) => {
+    const productExit = cartProduct.find((item) => item.id === product.id);
+
+    if (productExit) {
+      setCartProduct(
+        cartProduct.map((item) =>
+          item.id === product.id ? { ...productExit } : item
+        )
+      );
+    } else {
+      setCartProduct([...cartProduct, product]);
+    }
+
+    console.log(cartProduct);
+  };
+
+  // const addToCart = (product) => {
+  //   setCartProduct([...cartProduct, product]);
+  // };
+
+  // const removeFromCart = (product) => {
+  //   const newProduct = cartProduct.filter(
+  //     (addedItem) => addedItem.id !== product.id
+  //   );
+  //   setCartProduct(newProduct);
+  // };
+
   useEffect(() => {
     fetchProduct();
   }, []);
@@ -59,7 +87,13 @@ function App() {
     createRoutesFromElements(
       <Route
         path="/"
-        element={<Nav data={state.data} setProducts={setProducts} />}
+        element={
+          <Nav
+            data={state.data}
+            setProducts={setProducts}
+            cartProduct={cartProduct}
+          />
+        }
       >
         <Route
           index
@@ -67,7 +101,10 @@ function App() {
         />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/products" element={<SingleProduct />} />
+        <Route
+          path="/products"
+          element={<SingleProduct addToCart={addToCart} />}
+        />
       </Route>
     )
   );
