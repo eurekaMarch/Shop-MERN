@@ -11,6 +11,7 @@ import Nav from "./components/Nav/Nav";
 import Register from "./components/LoginPage/Register";
 import Login from "./components/LoginPage/Login";
 import SingleProduct from "./components/SingleProductPage/SingleProduct";
+import Cart from "./components/CartPage/Cart";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Utils/theme";
 import { productApi } from "../src/Utils/axios";
@@ -25,6 +26,7 @@ function App() {
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
   const [cartProduct, setCartProduct] = useState([]);
+  const [amountItem, setAmountItem] = useState(1);
 
   const fetchProduct = async () => {
     setState((prev) => ({
@@ -58,15 +60,15 @@ function App() {
     if (productExit) {
       setCartProduct(
         cartProduct.map((item) =>
-          item.id === product.id ? { ...productExit } : item
+          item.id === product.id ? { ...productExit, qty: amountItem } : item
         )
       );
     } else {
-      setCartProduct([...cartProduct, product]);
+      setCartProduct([...cartProduct, { ...product, qty: amountItem }]);
     }
-
-    console.log(cartProduct);
   };
+
+  console.log(cartProduct);
 
   // const addToCart = (product) => {
   //   setCartProduct([...cartProduct, product]);
@@ -103,8 +105,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/products"
-          element={<SingleProduct addToCart={addToCart} />}
+          element={
+            <SingleProduct
+              addToCart={addToCart}
+              amountItem={amountItem}
+              setAmountItem={setAmountItem}
+            />
+          }
         />
+        <Route path="/cart" element={<Cart />} />
       </Route>
     )
   );

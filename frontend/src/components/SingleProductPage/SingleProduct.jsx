@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { productApi } from "../../Utils/axios";
 import Box from "@mui/material/Box";
 import CardMedia from "@mui/material/CardMedia";
@@ -17,10 +17,10 @@ const initial = {
 };
 
 function SingleProduct(value) {
-  const { addToCart } = value;
-  const [amountItem, setAmountItem] = useState(1);
+  const { addToCart, amountItem, setAmountItem } = value;
+  // const [amountItem, setAmountItem] = useState(1);
   const [productItem, setProductItem] = useState(initial);
-  // const [isAdded, setIsAdded] = useState(true);
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
 
@@ -47,6 +47,12 @@ function SingleProduct(value) {
       loading: false,
       error: fetchError,
     }));
+  };
+
+  const AddToCartHandle = () => {
+    addToCart(productItem.product);
+    navigate(`/cart`, { replace: true });
+    setAmountItem(1);
   };
 
   useEffect(() => {
@@ -188,7 +194,7 @@ function SingleProduct(value) {
                   height: "5rem",
                   mb: "2rem",
                 }}
-                onClick={() => addToCart(productItem.product)}
+                onClick={AddToCartHandle}
               >
                 Add to cart
               </Button>
