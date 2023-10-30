@@ -59,9 +59,11 @@ function App() {
 
     if (productExit) {
       setCartProduct(
-        cartProduct.map((item) =>
-          item.id === product.id ? { ...productExit, qty: amountItem } : item
-        )
+        cartProduct.map((item) => {
+          return item.id === product.id
+            ? { ...productExit, qty: amountItem }
+            : item;
+        })
       );
     } else {
       setCartProduct([...cartProduct, { ...product, qty: amountItem }]);
