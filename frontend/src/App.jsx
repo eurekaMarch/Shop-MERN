@@ -27,10 +27,9 @@ const initial = {
 function App() {
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
-  const [amountItem, setAmountItem] = useState(1);
 
   const { addToCart, removeFromCart, cartProduct, increaseQty, decreaseQty } =
-    ProductToCart(amountItem);
+    ProductToCart();
 
   const fetchProduct = async () => {
     setState((prev) => ({
@@ -82,13 +81,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/products"
-          element={
-            <SingleProduct
-              addToCart={addToCart}
-              amountItem={amountItem}
-              setAmountItem={setAmountItem}
-            />
-          }
+          element={<SingleProduct addToCart={addToCart} />}
         />
         <Route
           path="/cart"

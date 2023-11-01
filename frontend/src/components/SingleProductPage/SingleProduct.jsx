@@ -18,8 +18,10 @@ const initial = {
 };
 
 function SingleProduct(value) {
-  const { addToCart, amountItem, setAmountItem } = value;
+  const { addToCart } = value;
+
   const [productItem, setProductItem] = useState(initial);
+  const [amountItem, setAmountItem] = useState(1);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
@@ -50,7 +52,7 @@ function SingleProduct(value) {
   };
 
   const AddToCartHandle = () => {
-    addToCart(productItem.product);
+    addToCart(productItem.product, amountItem);
     navigate(`/cart`, { replace: true });
     setAmountItem(1);
   };

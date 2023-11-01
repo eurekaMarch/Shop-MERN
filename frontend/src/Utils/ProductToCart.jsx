@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-function ProductToCart(amountItem) {
+function ProductToCart() {
   const [cartProduct, setCartProduct] = useState([]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, amountItem) => {
     const productExit = cartProduct.find((item) => item.id === product.id);
 
     if (productExit) {
