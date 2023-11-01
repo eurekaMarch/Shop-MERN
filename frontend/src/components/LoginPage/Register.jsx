@@ -108,7 +108,7 @@ function Register() {
               ></InputBase>
               <Button
                 variant="contained"
-                color="lightGreen600"
+                color="green"
                 size="normal"
                 sx={{ width: "10rem", my: "2rem", fontSize: "1.6rem" }}
                 onClick={() =>

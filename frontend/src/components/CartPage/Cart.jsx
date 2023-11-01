@@ -9,28 +9,39 @@ import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
 
 function Cart(value) {
-  const { cartProduct, setCartProduct, removeFromCart } = value;
+  const { cartProduct, removeFromCart, increaseQty, decreaseQty } = value;
 
   const totalPrice = cartProduct
     .reduce((pre, cur) => {
       return pre + Number(cur.qty) * Number(cur.price);
     }, 0)
-    .toFixed(2);
+    .toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 
   return (
     <div>
       {cartProduct.length === 0 ? (
-        <Card
+        <Box
           sx={{
             mx: "4rem",
-            mt: "4rem",
+            mt: "6rem",
             height: "15rem",
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <Typography sx={{ mr: "4rem", fontWeight: 600 }}>
+          <Typography
+            sx={{
+              mb: "2rem",
+              fontWeight: 600,
+              fontSize: "2rem",
+              color: grey[600],
+            }}
+          >
             Your cart is empty
           </Typography>
 
@@ -47,7 +58,7 @@ function Cart(value) {
               Shopping Now
             </Button>
           </Link>
-        </Card>
+        </Box>
       ) : (
         <Box sx={{ display: "flex", flexDirection: "column", my: "4rem" }}>
           {cartProduct.map((product) => {
@@ -58,7 +69,6 @@ function Cart(value) {
                     mx: "9rem",
                     mb: "-1rem",
                     background: red[500],
-                    opacity: 1,
                     height: "2.2rem",
                     width: "2.2rem",
                     zIndex: 100,
@@ -67,6 +77,7 @@ function Cart(value) {
                     alignItems: "center",
                     borderRadius: "50%",
                     position: "relative",
+                    cursor: "pointer",
                   }}
                   onClick={() => removeFromCart(product)}
                 >
@@ -150,9 +161,7 @@ function Cart(value) {
                               justifyContent: "center",
                               alignItems: "center",
                             }}
-                            onClick={() =>
-                              setCartProduct(Math.max(product.qty - 1, 1))
-                            }
+                            onClick={() => decreaseQty(product)}
                           >
                             <i
                               className="fa-solid fa-minus"
@@ -184,7 +193,7 @@ function Cart(value) {
                               justifyContent: "center",
                               alignItems: "center",
                             }}
-                            onClick={() => setCartProduct(product.qty + 1)}
+                            onClick={() => increaseQty(product)}
                           >
                             <i
                               className="fa-solid fa-plus"
@@ -230,7 +239,7 @@ function Cart(value) {
               component="span"
               sx={{ ml: "1rem", fontWeight: "bold", color: red[500] }}
             >
-              ${totalPrice}
+              $ {totalPrice}
             </Box>
           </Box>
 

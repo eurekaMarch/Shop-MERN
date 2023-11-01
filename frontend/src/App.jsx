@@ -16,6 +16,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Utils/theme";
 import { productApi } from "../src/Utils/axios";
 import Shipping from "./components/ShippingPage/Shipping";
+import ProductToCart from "../src/Utils/ProductToCart";
 
 const initial = {
   data: [],
@@ -26,8 +27,10 @@ const initial = {
 function App() {
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
-  const [cartProduct, setCartProduct] = useState([]);
   const [amountItem, setAmountItem] = useState(1);
+
+  const { addToCart, removeFromCart, cartProduct, increaseQty, decreaseQty } =
+    ProductToCart(amountItem);
 
   const fetchProduct = async () => {
     setState((prev) => ({
@@ -53,35 +56,6 @@ function App() {
     }));
 
     setProducts(products);
-  };
-
-  const addToCart = (product) => {
-    const productExit = cartProduct.find((item) => item.id === product.id);
-
-    if (productExit) {
-      setCartProduct(
-        cartProduct.map((item) => {
-          return item.id === product.id
-            ? { ...productExit, qty: amountItem }
-            : item;
-        })
-      );
-    } else {
-      setCartProduct([...cartProduct, { ...product, qty: amountItem }]);
-    }
-  };
-
-  console.log(cartProduct);
-
-  // const addToCart = (product) => {
-  //   setCartProduct([...cartProduct, product]);
-  // };
-
-  const removeFromCart = (product) => {
-    const newProduct = cartProduct.filter(
-      (addedProduct) => addedProduct.id !== product.id
-    );
-    setCartProduct(newProduct);
   };
 
   useEffect(() => {
@@ -121,8 +95,9 @@ function App() {
           element={
             <Cart
               cartProduct={cartProduct}
-              setCartProduct={setCartProduct}
               removeFromCart={removeFromCart}
+              increaseQty={increaseQty}
+              decreaseQty={decreaseQty}
             />
           }
         />
