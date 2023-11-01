@@ -15,6 +15,7 @@ import Cart from "./components/CartPage/Cart";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Utils/theme";
 import { productApi } from "../src/Utils/axios";
+import Shipping from "./components/ShippingPage/Shipping";
 
 const initial = {
   data: [],
@@ -76,12 +77,12 @@ function App() {
   //   setCartProduct([...cartProduct, product]);
   // };
 
-  // const removeFromCart = (product) => {
-  //   const newProduct = cartProduct.filter(
-  //     (addedProduct) => addedProduct.id !== product.id
-  //   );
-  //   setCartProduct(newProduct);
-  // };
+  const removeFromCart = (product) => {
+    const newProduct = cartProduct.filter(
+      (addedProduct) => addedProduct.id !== product.id
+    );
+    setCartProduct(newProduct);
+  };
 
   useEffect(() => {
     fetchProduct();
@@ -115,7 +116,17 @@ function App() {
             />
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cartProduct={cartProduct}
+              setCartProduct={setCartProduct}
+              removeFromCart={removeFromCart}
+            />
+          }
+        />
+        <Route path="/shipping" element={<Shipping />} />
       </Route>
     )
   );

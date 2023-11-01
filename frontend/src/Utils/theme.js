@@ -13,6 +13,11 @@ const theme = createTheme({
     },
     green: {
       main: "#1CB803",
+      dark: "#19a502",
+      contrastText: "#fff",
+    },
+    green2: {
+      main: "#1CB803",
       contrastText: "#fff",
     },
     lightGreen600: {

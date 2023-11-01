@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { productApi } from "../../Utils/axios";
 import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import { Button, CardActionArea } from "@mui/material";
+import { CardActionArea } from "@mui/material";
+import Button from "@mui/material/Button";
 import { red, grey } from "@mui/material/colors";
 
 const initial = {
