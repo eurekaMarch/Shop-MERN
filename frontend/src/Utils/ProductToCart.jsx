@@ -38,12 +38,12 @@ function ProductToCart() {
     // );
     // setCartProduct(newProduct);
 
-    const newCardItems = cartItems.filter(
+    const newCartItems = cartItems.filter(
       (addedProduct) => addedProduct.id !== product.id
     );
 
-    window.localStorage.setItem("cardItems", JSON.stringify(newCardItems));
-    setCartProduct(newCardItems);
+    window.localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+    setCartProduct(newCartItems);
   };
 
   const increaseQty = (product) => {
@@ -64,7 +64,7 @@ function ProductToCart() {
           : item;
       });
 
-      window.localStorage.setItem("cardItems", JSON.stringify(newCartItems));
+      window.localStorage.setItem("cartItems", JSON.stringify(newCartItems));
       setCartProduct(newCartItems);
     }
   };
