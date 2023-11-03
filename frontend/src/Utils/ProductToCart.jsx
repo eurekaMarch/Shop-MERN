@@ -15,6 +15,7 @@ function ProductToCart() {
       //       : item;
       //   })
       // );
+
       const newCartItems = cartItems.map((item) => {
         return item.id === product.id
           ? { ...productExit, qty: amountItem }
