@@ -90,12 +90,17 @@ function ProductToCart() {
     setCartProduct(newCardItems);
   };
 
+  const clearLocalStorage = () => {
+    window.localStorage.removeItem("cardItems");
+  };
+
   return {
     addToCart,
     removeFromCart,
     cartProduct,
     increaseQty,
     decreaseQty,
+    clearLocalStorage,
   };
 }
 

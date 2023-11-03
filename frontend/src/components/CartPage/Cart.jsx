@@ -9,7 +9,13 @@ import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
 
 function Cart(value) {
-  const { cartProduct, removeFromCart, increaseQty, decreaseQty } = value;
+  const {
+    cartProduct,
+    removeFromCart,
+    increaseQty,
+    decreaseQty,
+    clearLocalStorage,
+  } = value;
 
   const totalPrice = cartProduct
     .reduce((pre, cur) => {
@@ -285,6 +291,7 @@ function Cart(value) {
                     height: "5.5rem",
                     width: "55%",
                   }}
+                  onClick={clearLocalStorage}
                 >
                   Checkout
                 </Button>

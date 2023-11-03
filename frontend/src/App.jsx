@@ -28,8 +28,14 @@ function App() {
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
 
-  const { addToCart, removeFromCart, cartProduct, increaseQty, decreaseQty } =
-    ProductToCart();
+  const {
+    addToCart,
+    removeFromCart,
+    cartProduct,
+    increaseQty,
+    decreaseQty,
+    clearLocalStorage,
+  } = ProductToCart();
 
   const fetchProduct = async () => {
     setState((prev) => ({
@@ -91,6 +97,7 @@ function App() {
               removeFromCart={removeFromCart}
               increaseQty={increaseQty}
               decreaseQty={decreaseQty}
+              clearLocalStorage={clearLocalStorage}
             />
           }
         />
