@@ -236,9 +236,18 @@ function Nav(value) {
                 <MenuItem onClick={handleLogin}>LOGIN</MenuItem>
               </Menu>
 
-              <Badge badgeContent={amountProduct} showZero sx={{ ml: "1rem" }}>
-                <i className="fa-solid fa-cart-shopping fa-lg "></i>
-              </Badge>
+              <Link to="/cart">
+                <Badge
+                  badgeContent={amountProduct}
+                  showZero
+                  sx={{ ml: "1rem" }}
+                >
+                  <i
+                    className="fa-solid fa-cart-shopping fa-lg "
+                    id="Nav__cart"
+                  ></i>
+                </Badge>
+              </Link>
             </Box>
           </Box>
 
