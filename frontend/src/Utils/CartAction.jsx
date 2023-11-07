@@ -1,8 +1,12 @@
 import { useState } from "react";
 
-function ProductToCart() {
+function CartAction() {
   const cartItems = JSON.parse(window.localStorage.getItem("cartItems")) || [];
+  const shippingAdd =
+    JSON.parse(window.localStorage.getItem("shippingAddress")) || "";
+
   const [cartProduct, setCartProduct] = useState(cartItems);
+  const [shipping, setShipping] = useState(shippingAdd);
 
   const addToCart = (product, amountItem) => {
     const productExit = cartProduct.find((item) => item.id === product.id);
@@ -91,6 +95,11 @@ function ProductToCart() {
     setCartProduct(newCartItems);
   };
 
+  const shippingAddress = (data) => {
+    window.localStorage.setItem("shippingAddress", JSON.stringify(data));
+    setShipping(shippingAdd);
+  };
+
   const clearLocalStorage = () => {
     window.localStorage.removeItem("cartItems");
   };
@@ -102,7 +111,9 @@ function ProductToCart() {
     increaseQty,
     decreaseQty,
     clearLocalStorage,
+    shippingAddress,
+    shipping,
   };
 }
 
-export default ProductToCart;
+export default CartAction;

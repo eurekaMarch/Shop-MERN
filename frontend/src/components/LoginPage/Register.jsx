@@ -35,6 +35,7 @@ function Register() {
           justifyContent: "center",
           textAlign: "center",
           px: "2rem",
+          pb: "2rem",
         }}
       >
         <Grid xs={12} sm={8} md={4}>

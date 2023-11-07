@@ -18,6 +18,7 @@ const initial = {
 };
 
 function SingleProduct(value) {
+  window.scrollTo(0, 0);
   const { addToCart } = value;
 
   const [productItem, setProductItem] = useState(initial);

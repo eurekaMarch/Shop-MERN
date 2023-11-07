@@ -14,6 +14,7 @@ import { grey } from "@mui/material/colors";
 import searchImage from "../../assets/searchEmpty.png";
 
 function Home(values) {
+  window.scrollTo(0, 0);
   const { products, loading } = values;
 
   const filterProduct = products.filter((item) => {

@@ -16,7 +16,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Utils/theme";
 import { productApi } from "../src/Utils/axios";
 import Shipping from "./components/ShippingPage/Shipping";
-import ProductToCart from "../src/Utils/ProductToCart";
+import CartAction from "./Utils/CartAction";
+import Payment from "./components/Paymentpage/Payment";
 
 const initial = {
   data: [],
@@ -34,8 +35,9 @@ function App() {
     cartProduct,
     increaseQty,
     decreaseQty,
-    clearLocalStorage,
-  } = ProductToCart();
+    shippingAddress,
+    shipping,
+  } = CartAction();
 
   const fetchProduct = async () => {
     setState((prev) => ({
@@ -97,11 +99,16 @@ function App() {
               removeFromCart={removeFromCart}
               increaseQty={increaseQty}
               decreaseQty={decreaseQty}
-              clearLocalStorage={clearLocalStorage}
             />
           }
         />
-        <Route path="/shipping" element={<Shipping />} />
+        <Route
+          path="/shipping"
+          element={
+            <Shipping shippingAddress={shippingAddress} shipping={shipping} />
+          }
+        />
+        <Route path="/payment" element={<Payment shipping={shipping} />} />
       </Route>
     )
   );
