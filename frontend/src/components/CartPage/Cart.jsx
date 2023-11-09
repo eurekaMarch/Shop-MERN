@@ -9,7 +9,7 @@ import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
 
 function Cart(value) {
-  window.scrollTo(0, 0);
+ 
   const { cartProduct, removeFromCart, increaseQty, decreaseQty } = value;
 
   const totalPrice = cartProduct
