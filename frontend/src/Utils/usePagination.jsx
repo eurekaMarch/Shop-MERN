@@ -12,14 +12,6 @@ function usePagination(allProducts, cardPerPage) {
     return allProducts.slice(indexOfFirstCard, indexOfLastCard);
   }
 
-  function nextPage() {
-    setPage((page) => Math.min(page + 1, maxPage));
-  }
-
-  function prevPage() {
-    setPage((page) => Math.max(page - 1, 1));
-  }
-
   const jumpPage = useCallback(
     (page) => {
       const pageNumber = Math.max(1, page);
@@ -28,7 +20,7 @@ function usePagination(allProducts, cardPerPage) {
     [maxPage]
   );
 
-  return { nextPage, prevPage, jumpPage, pageProducts, page, maxPage };
+  return { jumpPage, pageProducts, page, maxPage };
 }
 
 export default usePagination;
