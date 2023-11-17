@@ -114,7 +114,7 @@ function Register() {
                 sx={{ width: "10rem", my: "2rem", fontSize: "1.6rem" }}
                 onClick={() =>
                   onRegister({
-                    username: name,
+                    userName: name,
                     email,
                     password,
                   })
