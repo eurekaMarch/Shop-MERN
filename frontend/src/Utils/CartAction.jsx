@@ -9,7 +9,7 @@ function CartAction() {
   const [shipping, setShipping] = useState(shippingAdd);
 
   const addToCart = (product, amountItem) => {
-    const productExit = cartProduct.find((item) => item.id === product.id);
+    const productExit = cartProduct.find((item) => item._id === product._id);
 
     if (productExit) {
       // setCartProduct(
@@ -21,7 +21,7 @@ function CartAction() {
       // );
 
       const newCartItems = cartItems.map((item) => {
-        return item.id === product.id
+        return item._id === product._id
           ? { ...productExit, qty: amountItem }
           : item;
       });
@@ -44,7 +44,7 @@ function CartAction() {
     // setCartProduct(newProduct);
 
     const newCartItems = cartItems.filter(
-      (addedProduct) => addedProduct.id !== product.id
+      (addedProduct) => addedProduct._id !== product._id
     );
 
     window.localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -52,7 +52,7 @@ function CartAction() {
   };
 
   const increaseQty = (product) => {
-    const productExit = cartProduct.find((item) => item.id === product.id);
+    const productExit = cartProduct.find((item) => item._id === product._id);
 
     if (productExit) {
       // setCartProduct(
@@ -64,7 +64,7 @@ function CartAction() {
       // );
 
       const newCartItems = cartItems.map((item) => {
-        return item.id === product.id
+        return item._id === product._id
           ? { ...productExit, qty: productExit.qty + 1 }
           : item;
       });
@@ -75,7 +75,7 @@ function CartAction() {
   };
 
   const decreaseQty = (product) => {
-    const productExit = cartProduct.find((item) => item.id === product.id);
+    const productExit = cartProduct.find((item) => item._id === product._id);
 
     // setCartProduct(
     //   cartProduct.map((item) =>
@@ -86,7 +86,7 @@ function CartAction() {
     // );
 
     const newCartItems = cartItems.map((item) => {
-      return item.id === product.id
+      return item._id === product._id
         ? { ...productExit, qty: Math.max(productExit.qty - 1, 1) }
         : item;
     });

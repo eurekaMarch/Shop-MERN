@@ -9,7 +9,6 @@ import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
 
 function Cart(value) {
- 
   const { cartProduct, removeFromCart, increaseQty, decreaseQty } = value;
 
   const totalPrice = cartProduct
@@ -64,7 +63,7 @@ function Cart(value) {
         <Box sx={{ display: "flex", flexDirection: "column", my: "4rem" }}>
           {cartProduct.map((product) => {
             return (
-              <div key={product.id}>
+              <div key={product._id}>
                 <Box
                   sx={{
                     mx: "9rem",

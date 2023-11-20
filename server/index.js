@@ -35,12 +35,6 @@ app.get("/", async (req, res) => {
   res.send("API is running...");
 });
 
-// app.get("/products", async (req, res) => {
-//   await Product.find()
-//     .then((products) => res.json(products))
-//     .catch((err) => res.json(err));
-// });
-
 app.post("/register", async (req, res) => {
   register(req, res);
 });
