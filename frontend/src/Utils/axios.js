@@ -7,5 +7,6 @@ const createAxios = (baseUrl) => {
 };
 
 const productApi = createAxios("https://fakestoreapi.com/");
+const mongoDBApi = createAxios("http://localhost:5000/api/");
 
-export { productApi };
+export { productApi, mongoDBApi };

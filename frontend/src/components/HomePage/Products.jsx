@@ -12,7 +12,7 @@ function Products(value) {
   return (
     <div>
       <CardActionArea>
-        <Link to={`/products?id=${product.id}`}>
+        <Link to={`/products?id=${product._id}`}>
           <Card sx={{ textAlign: "center", minHeight: "32rem" }}>
             <CardMedia
               component="img"

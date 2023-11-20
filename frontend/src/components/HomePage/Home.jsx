@@ -54,7 +54,7 @@ function Home(values) {
           <Grid container xs={12} sm={12} md={12} spacing={3}>
             {pageProducts().map((product) => {
               return (
-                <Grid xs={12} sm={6} md={4} key={product.id}>
+                <Grid xs={12} sm={6} md={4} key={product._id}>
                   <Products product={product} />
                 </Grid>
               );
@@ -106,7 +106,6 @@ function Home(values) {
 
       <Newsletter />
       <Footer />
-      <div>{products.id}</div>
     </div>
   );
 }

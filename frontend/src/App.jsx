@@ -14,7 +14,7 @@ import SingleProduct from "./components/SingleProductPage/SingleProduct";
 import Cart from "./components/CartPage/Cart";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Utils/theme";
-import { productApi } from "../src/Utils/axios";
+import { mongoDBApi } from "../src/Utils/axios";
 import Shipping from "./components/ShippingPage/Shipping";
 import CartAction from "./Utils/CartAction";
 import Payment from "./components/Paymentpage/Payment";
@@ -48,7 +48,7 @@ function App() {
     let fetchError;
 
     try {
-      const productResponse = await productApi.get("products");
+      const productResponse = await mongoDBApi.get("products");
 
       products = await productResponse?.data;
     } catch (error) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { productApi } from "../../Utils/axios";
+import { mongoDBApi } from "../../Utils/axios";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -36,7 +36,7 @@ function SingleProduct(value) {
     let fetchError;
 
     try {
-      const productResponse = await productApi.get(`products/${id}`);
+      const productResponse = await mongoDBApi.get(`products/${id}`);
 
       products = await productResponse?.data;
     } catch (error) {

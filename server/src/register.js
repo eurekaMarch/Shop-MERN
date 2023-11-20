@@ -1,9 +1,6 @@
-import connectDatabase from "../DB/MongoDB.js";
 import User from "../models/user.js";
 
 const register = async (req, res) => {
-  await connectDatabase();
-
   let data = req.body;
   let responseData = {};
   console.log(data, "<<<< body");
@@ -15,7 +12,7 @@ const register = async (req, res) => {
       responseData.success = true;
     } else if (checktUser.username === data.username) {
       responseData.success = false;
-      responseData.error = "user duplicate";
+      responseData.error = "user already exists";
       throw new Error("user already exists");
     } else {
       await User.insertMany(data);
