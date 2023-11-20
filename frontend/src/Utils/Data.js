@@ -98,6 +98,7 @@ const Data = [
     category: "electronics",
     image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
     rating: { rate: 3.3, count: 203 },
+    stock: 1,
   },
   {
     id: 10,
