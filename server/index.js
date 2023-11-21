@@ -12,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
@@ -26,9 +27,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.listen(PORT, () => console.log(`server is running on ${PORT}`));
-
 app.use("/api/import", ImportData);
+
 app.use("/api/products", productRoutes);
 
 app.get("/", async (req, res) => {
@@ -38,3 +38,5 @@ app.get("/", async (req, res) => {
 app.post("/register", async (req, res) => {
   register(req, res);
 });
+
+app.listen(PORT, () => console.log(`server is running on ${PORT}`));
