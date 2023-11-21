@@ -43,7 +43,7 @@ function Nav(value) {
     event.preventDefault();
 
     const filteredSearch = data.filter((element) => {
-      return element.title.toLowerCase().includes(search);
+      return element.name.toLowerCase().includes(search);
     });
     setProducts(filteredSearch);
     navigate(`/`);

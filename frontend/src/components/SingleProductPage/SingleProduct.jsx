@@ -113,7 +113,7 @@ function SingleProduct(value) {
                   textAlign: "justify",
                 }}
               >
-                {productItem.product.title}
+                {productItem.product.name}
               </Typography>
 
               <Typography

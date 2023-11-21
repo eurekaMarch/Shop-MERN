@@ -134,7 +134,7 @@ function Cart(value) {
                           textAlign: "crnter",
                         }}
                       >
-                        {product.title}
+                        {product.name}
                       </Typography>
                     </Grid>
 

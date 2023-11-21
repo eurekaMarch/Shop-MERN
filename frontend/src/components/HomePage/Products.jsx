@@ -32,7 +32,7 @@ function Products(value) {
                 gutterBottom
                 sx={{ fontWeight: "bold", fontSize: "1.2rem" }}
               >
-                {product.title}
+                {product.name}
               </Typography>
               <Typography sx={{ fontWeight: "bold", fontSize: "1.3rem" }}>
                 $ {product.price}
