@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import connectDatabase from "./DB/MongoDB.js";
 import ImportData from "./src/DataImport.js";
-// import register from "./src/register.js";
 import productRoutes from "./Routes/ProductRoutes.js";
 import userRoutes from "./Routes/UserRoutes.js";
+import error from "./Middleware/Errors.js";
 
 dotenv.config();
 connectDatabase();
@@ -32,14 +32,9 @@ app.use("/api/import", ImportData);
 
 app.use("/api/products", productRoutes);
 
-// app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes);
 
-app.get("/", async (req, res) => {
-  res.send("API is running...");
-});
-
-// app.post("/register", async (req, res) => {
-//   register(req, res);
-// });
+app.use(error.notFound);
+app.use(error.errorHandler);
 
 app.listen(PORT, () => console.log(`server is running on ${PORT}`));
