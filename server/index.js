@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import connectDatabase from "./DB/MongoDB.js";
-import ImportData from "./src/DataImport.js";
+import ImportData from "./DataImport.js";
 import productRoutes from "./Routes/ProductRoutes.js";
 import userRoutes from "./Routes/UserRoutes.js";
 import error from "./Middleware/Errors.js";

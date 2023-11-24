@@ -40,7 +40,7 @@ function Footer() {
           bgcolor: grey[300],
         }}
       >
-        <Typography sx={{ fontWeight: "bold", color: "#5f8e3e", pr: "1rem" }}>
+        <Typography sx={{ fontWeight: "bold", color: "#EA8018", pr: "0.5rem" }}>
           Shopeefy
         </Typography>
         <Typography sx={{ fontSize: "1rem" }}>

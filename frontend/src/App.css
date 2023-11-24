@@ -25,6 +25,10 @@ a {
     font-size: 1.2rem;
   }
 
+  #Nav__logo {
+    width: 120px;
+  }
+
   #Nav__cart {
     font-size: 14px;
   }

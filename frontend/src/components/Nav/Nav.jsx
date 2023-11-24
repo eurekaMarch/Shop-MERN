@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import Logo from "../../assets/shopping.png";
+import Logo from "../../assets/Shopeefy-1.png";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Header from "./Header";
@@ -59,32 +59,17 @@ function Nav(value) {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-            mt: "1rem",
+            mt: "1.5rem",
           }}
           id="Nav__pc"
         >
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
-              position: "relative",
-              width: "21rem",
+              ml: "1rem",
             }}
           >
             <Link to="/">
-              <img width={70} src={Logo} alt="logo" />
-              <Typography
-                sx={{
-                  fontSize: "3rem",
-                  fontWeight: "bold",
-                  position: "absolute",
-                  left: "6rem",
-                  top: "1.5rem",
-                  color: "#5f8e3e",
-                }}
-              >
-                Shopeefy
-              </Typography>
+              <img width={200} src={Logo} alt="logo" id="Nav__logo" />
             </Link>
           </Box>
 
@@ -180,26 +165,12 @@ function Nav(value) {
           >
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                position: "relative",
-                width: "14rem",
+                mb: "1rem",
+                ml: "0.8rem",
               }}
             >
               <Link to="/">
-                <img width={60} src={Logo} alt="logo" />
-                <Typography
-                  sx={{
-                    fontSize: "1.6rem",
-                    fontWeight: "bold",
-                    position: "absolute",
-                    left: "5.5rem",
-                    top: "2rem",
-                    color: "#5f8e3e",
-                  }}
-                >
-                  Shopeefy
-                </Typography>
+                <img width={120} src={Logo} alt="logo" />
               </Link>
             </Box>
 
