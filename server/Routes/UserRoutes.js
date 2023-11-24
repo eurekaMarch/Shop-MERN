@@ -1,11 +1,12 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
+import common from "../common/common.js";
 
 const userRoutes = express.Router();
 
 userRoutes.post(
-  "/",
+  "/register",
   asyncHandler(async (req, res) => {
     let data = req.body;
     let responseData = {};
@@ -26,6 +27,45 @@ userRoutes.post(
       responseData.success = false;
       responseData.error = "email already exists";
       res.status(400);
+    }
+
+    res.send(responseData);
+  })
+);
+
+userRoutes.post(
+  "/login",
+  asyncHandler(async (req, res) => {
+    const data = req.body;
+    const responseData = {};
+
+    const checktUser = await User.findOne({ email: data.email });
+
+    if (checktUser === null) {
+      responseData.success = false;
+      responseData.error = "user not found";
+      res.status(401);
+    } else {
+      const decryptedPwd = await common.commonService.decrypted(
+        checktUser.password
+      );
+
+      if (decryptedPwd == data.password) {
+        const tokenObj = { _id: checktUser._id };
+
+        responseData.success = true;
+        responseData.data = {
+          _id: checktUser._id,
+          username: checktUser.username,
+          email: checktUser.email,
+          token: await common.commonService.generateToken(tokenObj),
+          createdAt: checktUser.createdAt,
+        };
+      } else {
+        responseData.success = false;
+        responseData.error = "password invalid";
+        res.status(401);
+      }
     }
 
     res.send(responseData);

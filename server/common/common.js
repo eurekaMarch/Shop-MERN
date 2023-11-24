@@ -28,7 +28,7 @@ const decrypted = async (data) => {
 const generateToken = async (data) => {
   try {
     let key = process.env.KEY_SECRET;
-    let token = jwt.sign(data, key);
+    let token = jwt.sign(data, key, { expiresIn: "30d" });
     return token;
   } catch (error) {
     console.log(error);
