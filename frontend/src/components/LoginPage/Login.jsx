@@ -20,7 +20,7 @@ function Login() {
     <Box
       sx={{
         width: "100%",
-        mt: "3rem",
+        mt: "2.5rem",
         flexGrow: 1,
       }}
     >
@@ -52,14 +52,13 @@ function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 sx={{
-                  pt: "2rem",
+                  pt: "3rem",
                   px: "3rem",
                   width: "100%",
                   input: {
                     background: "white",
                     pl: "1rem",
                     height: "5rem",
-
                     border: 1,
                     borderRadius: 1.2,
                     borderColor: grey[300],
@@ -79,7 +78,6 @@ function Login() {
                     background: "white",
                     pl: "1rem",
                     height: "5rem",
-
                     border: 1,
                     borderRadius: 1.2,
                     borderColor: grey[300],
@@ -103,7 +101,7 @@ function Login() {
             </form>
 
             <Link to="/register">
-              <Typography sx={{ color: grey[600], mb: "3rem" }}>
+              <Typography sx={{ color: grey[600], mb: "1rem" }}>
                 Create Account
               </Typography>
             </Link>

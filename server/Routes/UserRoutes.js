@@ -17,15 +17,12 @@ userRoutes.post(
 
     if (checktUser === null) {
       await User.create(data);
-      responseData.success = true;
       res.status(201);
     } else if (checktUser.username === data.username) {
-      responseData.success = false;
-      responseData.error = "user already exists";
+      responseData.error = "User already exists";
       res.status(400);
     } else if (checktUser.email === data.email) {
-      responseData.success = false;
-      responseData.error = "email already exists";
+      responseData.error = "Email already exists";
       res.status(400);
     }
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Box from "@mui/material/Box";
@@ -7,24 +7,58 @@ import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
+import { mongoDBApi } from "../../Utils/axios";
+import Alert from "@mui/material/Alert";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alertData, setAlertData] = useState("");
+  const navigate = useNavigate();
 
-  const onRegister = (data) => {
-    console.log(data);
+  const onRegister = async (data) => {
+    try {
+      await mongoDBApi.post(`users/register`, data);
+      navigate(`/login`);
+    } catch (error) {
+      if (error.response.status == 500) {
+        setAlertData({
+          text: error.response.data.message.join(", "),
+          type: "error",
+        });
+      } else if (error.response.status == 400) {
+        setAlertData({
+          text: error.response.data.error,
+          type: "error",
+        });
+      }
+    }
   };
 
   return (
     <Box
       sx={{
         width: "100%",
-        mt: "3rem",
+        mt: "2.5rem",
         flexGrow: 1,
       }}
     >
+      {alertData.text && (
+        <div>
+          <Alert
+            severity={alertData.type}
+            sx={{
+              mx: "1rem",
+              mb: "1rem",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {alertData.text}
+          </Alert>
+        </div>
+      )}
       <Grid
         container
         xs={12}
@@ -60,7 +94,6 @@ function Register() {
                     background: "white",
                     pl: "1rem",
                     height: "5rem",
-
                     border: 1,
                     borderRadius: 1.2,
                     borderColor: grey[300],
@@ -80,7 +113,6 @@ function Register() {
                     background: "white",
                     pl: "1rem",
                     height: "5rem",
-
                     border: 1,
                     borderRadius: 1.2,
                     borderColor: grey[300],
@@ -100,7 +132,6 @@ function Register() {
                     background: "white",
                     pl: "1rem",
                     height: "5rem",
-
                     border: 1,
                     borderRadius: 1.2,
                     borderColor: grey[300],
@@ -114,7 +145,7 @@ function Register() {
                 sx={{ width: "10rem", my: "2rem", fontSize: "1.6rem" }}
                 onClick={() =>
                   onRegister({
-                    userName: name,
+                    username: name,
                     email,
                     password,
                   })
@@ -125,7 +156,7 @@ function Register() {
             </form>
 
             <Link to="/login">
-              <Typography sx={{ color: grey[600], mb: "3rem" }}>
+              <Typography sx={{ color: grey[600], mb: "1rem" }}>
                 I Have Account <strong>Login</strong>
               </Typography>
             </Link>
