@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Box from "@mui/material/Box";
@@ -7,13 +7,34 @@ import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
+import { mongoDBApi } from "../../Utils/axios";
+import Alert from "@mui/material/Alert";
+import useToken from "../../Utils/Token";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alertData, setAlertData] = useState("");
+  const navigate = useNavigate();
 
-  const onLogin = (data) => {
-    console.log(data);
+  const { saveToken, saveUser } = useToken();
+
+  const onLogin = async (data) => {
+    try {
+      const response = await mongoDBApi.post(`users/login`, data);
+
+      saveToken(response.data.token);
+      saveUser(response.data.data);
+
+      navigate(`/`);
+    } catch (error) {
+      if (error.response.status == 401) {
+        setAlertData({
+          text: error.response.data.error,
+          type: "error",
+        });
+      }
+    }
   };
 
   return (
@@ -24,6 +45,21 @@ function Login() {
         flexGrow: 1,
       }}
     >
+      {alertData.text && (
+        <div>
+          <Alert
+            severity={alertData.type}
+            sx={{
+              mx: "1rem",
+              mb: "1rem",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {alertData.text}
+          </Alert>
+        </div>
+      )}
       <Grid
         container
         xs={12}

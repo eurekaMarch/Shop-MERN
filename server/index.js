@@ -12,6 +12,8 @@ connectDatabase();
 const app = express();
 const PORT = process.env.PORT;
 
+console.log(new Date());
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {

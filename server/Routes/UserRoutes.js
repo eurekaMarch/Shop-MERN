@@ -17,11 +17,14 @@ userRoutes.post(
 
     if (checktUser === null) {
       await User.create(data);
+      responseData.success = true;
       res.status(201);
     } else if (checktUser.username === data.username) {
+      responseData.success = false;
       responseData.error = "User already exists";
       res.status(400);
     } else if (checktUser.email === data.email) {
+      responseData.success = false;
       responseData.error = "Email already exists";
       res.status(400);
     }
@@ -40,7 +43,7 @@ userRoutes.post(
 
     if (checktUser === null) {
       responseData.success = false;
-      responseData.error = "user not found";
+      responseData.error = "User not found";
       res.status(401);
     } else {
       const decryptedPwd = await common.commonService.decrypted(
@@ -55,12 +58,12 @@ userRoutes.post(
           _id: checktUser._id,
           username: checktUser.username,
           email: checktUser.email,
-          token: await common.commonService.generateToken(tokenObj),
           createdAt: checktUser.createdAt,
         };
+        responseData.token = await common.commonService.generateToken(tokenObj);
       } else {
         responseData.success = false;
-        responseData.error = "password invalid";
+        responseData.error = "Password invalid";
         res.status(401);
       }
     }
