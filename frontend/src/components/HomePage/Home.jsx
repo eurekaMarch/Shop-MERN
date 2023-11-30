@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
 import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
@@ -62,15 +61,13 @@ function Home(values) {
           </Grid>
 
           <Box sx={{ display: "flex", justifyContent: "center", mt: "2rem" }}>
-            <Stack spacing={2}>
-              <Pagination
-                count={maxPage}
-                page={page}
-                onChange={handleChange}
-                size="large"
-                color="black"
-              />
-            </Stack>
+            <Pagination
+              count={maxPage}
+              page={page}
+              onChange={handleChange}
+              size="large"
+              color="black"
+            />
           </Box>
         </Box>
       ) : (

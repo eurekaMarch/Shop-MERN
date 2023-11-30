@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 import common from "../common/common.js";
+import moment from "moment-timezone";
+
+moment.tz.setDefault("Asia/Bangkok");
 
 const userSchema = new mongoose.Schema(
   {
@@ -17,8 +20,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
     },
-  },
-  { timestamps: true }
+    createdAt: {
+      type: String,
+      default: moment().format(),
+    },
+    updatedAt: {
+      type: String,
+      default: moment().format(),
+    },
+  }
+  // ,
+  // { timestamps: true }
 );
 
 userSchema.pre("save", async function (next) {
