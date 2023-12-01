@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Box from "@mui/material/Box";
@@ -15,18 +15,17 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alertData, setAlertData] = useState("");
-  const navigate = useNavigate();
 
   const { saveToken, saveUser } = useToken();
 
   const onLogin = async (data) => {
     try {
       const response = await mongoDBApi.post(`users/login`, data);
-
       saveToken(response.data.token);
+
       saveUser(response.data.data);
 
-      navigate(`/`);
+      window.location.replace(`/`);
     } catch (error) {
       if (error.response.status == 401) {
         setAlertData({

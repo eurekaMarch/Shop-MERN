@@ -6,38 +6,20 @@ import Button from "@mui/material/Button";
 import Header from "./Header";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Badge as BaseBadge, badgeClasses } from "@mui/base/Badge";
 import { styled } from "@mui/system";
 import { red, grey } from "@mui/material/colors";
+import MenuLogout from "./Menu/MenuLogout";
+import MenuLogin from "./Menu/MenuLogin";
 
 function Nav(value) {
-  const { data, setProducts, cartProduct } = value;
+  const { data, setProducts, cartProduct, token, user, clearToken } = value;
 
-  const [anchorEl, setAnchorEl] = useState(null);
   const [search, setSearch] = useState("");
-  const open = Boolean(anchorEl);
+
   const navigate = useNavigate();
 
   const amountProduct = cartProduct.length === 0 ? 0 : cartProduct.length;
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleLogin = () => {
-    navigate(`/login`, { replace: true });
-  };
-
-  const handleRegister = () => {
-    navigate(`/register`, { replace: true });
-  };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -132,12 +114,25 @@ function Nav(value) {
               mr: "3rem",
             }}
           >
-            <Link to="/register" id="Nav__register">
-              <Typography sx={{ color: grey[900] }}>REGISTER</Typography>
-            </Link>
-            <Link to="/login" id="Nav__login">
-              <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
-            </Link>
+            {token ? (
+              <MenuLogout user={user} clearToken={clearToken} />
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                }}
+              >
+                <Link to="/register" id="Nav__register">
+                  <Typography sx={{ color: grey[900], mr: "3rem" }}>
+                    REGISTER
+                  </Typography>
+                </Link>
+
+                <Link to="/login" id="Nav__login">
+                  <Typography sx={{ color: grey[900] }}>LOGIN</Typography>
+                </Link>
+              </Box>
+            )}
 
             <Link to="/cart">
               <Badge badgeContent={amountProduct} showZero>
@@ -174,38 +169,12 @@ function Nav(value) {
               </Link>
             </Box>
 
-            <Box sx={{ mr: "2rem" }}>
-              <Button
-                id="basic-button"
-                aria-controls={open ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-                endIcon={<KeyboardArrowDownIcon />}
-                variant="outlined"
-                color="black"
-                size="small"
-                sx={{
-                  p: "0.6rem",
-                }}
-              >
-                <i className="fa-solid fa-user"></i>
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-                sx={{
-                  fontSize: "1.4rem",
-                }}
-              >
-                <MenuItem onClick={handleRegister}>REGISTER</MenuItem>
-                <MenuItem onClick={handleLogin}>LOGIN</MenuItem>
-              </Menu>
+            <Box sx={{ mr: "2rem", display: "flex", justifyContent: "center" }}>
+              {token ? (
+                <MenuLogout user={user} clearToken={clearToken} />
+              ) : (
+                <MenuLogin />
+              )}
 
               <Link to="/cart">
                 <Badge

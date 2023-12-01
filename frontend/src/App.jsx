@@ -18,6 +18,7 @@ import { mongoDBApi } from "../src/Utils/axios";
 import Shipping from "./components/ShippingPage/Shipping";
 import CartAction from "./Utils/CartAction";
 import Payment from "./components/Paymentpage/Payment";
+import useToken from "./Utils/Token";
 
 const initial = {
   data: [],
@@ -26,6 +27,7 @@ const initial = {
 };
 
 function App() {
+  const { token, user, clearToken } = useToken();
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
 
@@ -78,6 +80,9 @@ function App() {
             data={state.data}
             setProducts={setProducts}
             cartProduct={cartProduct}
+            token={token}
+            user={user}
+            clearToken={clearToken}
           />
         }
       >

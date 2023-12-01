@@ -1,0 +1,58 @@
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
+function MenuLogout(value) {
+  const { user, clearToken } = value;
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <Box>
+      <Button
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+        endIcon={<KeyboardArrowDownIcon />}
+        variant="outlined"
+        color="black"
+        size="small"
+        sx={{
+          p: "0.6rem",
+          textTransform: "none",
+        }}
+      >
+        <Typography> Hi, {user.username}</Typography>
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+        sx={{
+          fontSize: "1.4rem",
+        }}
+      >
+        <MenuItem onClick={clearToken}>LOGOUT</MenuItem>
+      </Menu>
+    </Box>
+  );
+}
+
+export default MenuLogout;
