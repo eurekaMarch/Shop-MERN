@@ -169,7 +169,14 @@ function Nav(value) {
               </Link>
             </Box>
 
-            <Box sx={{ mr: "2rem", display: "flex", justifyContent: "center" }}>
+            <Box
+              sx={{
+                mr: "3rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               {token ? (
                 <MenuLogout user={user} clearToken={clearToken} />
               ) : (

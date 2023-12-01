@@ -19,7 +19,7 @@ function MenuLogout(value) {
     setAnchorEl(null);
   };
   return (
-    <Box>
+    <Box sx={{ ml: "1rem" }}>
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -29,9 +29,9 @@ function MenuLogout(value) {
         endIcon={<KeyboardArrowDownIcon />}
         variant="outlined"
         color="black"
-        size="small"
+        size="normal"
         sx={{
-          p: "0.6rem",
+          p: "1rem",
           textTransform: "none",
         }}
       >
