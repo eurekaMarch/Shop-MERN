@@ -9,6 +9,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
 
 function Shipping(value) {
+  window.scrollTo(0, 70);
   const { shippingAddress, shipping } = value;
   const [address, setAddress] = useState(shipping.address);
   const [city, setCity] = useState(shipping.city);

@@ -9,6 +9,7 @@ import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
 
 function Cart(value) {
+  window.scrollTo(0, 70);
   const { cartProduct, removeFromCart, increaseQty, decreaseQty } = value;
 
   const totalPrice = cartProduct
@@ -228,7 +229,7 @@ function Cart(value) {
               textAlign: "end",
               mr: "15rem",
               mb: "2rem",
-              mt: "2rem",
+
               fontSize: "2rem",
             }}
           >
@@ -243,7 +244,7 @@ function Cart(value) {
             </Box>
           </Box>
 
-          <Box sx={{ mx: "9rem", mb: "9rem" }}>
+          <Box sx={{ mx: "9rem", mb: "6rem" }}>
             <hr />
           </Box>
 
