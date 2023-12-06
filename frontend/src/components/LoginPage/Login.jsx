@@ -11,7 +11,9 @@ import { mongoDBApi } from "../../Utils/axios";
 import Alert from "@mui/material/Alert";
 import useToken from "../../Utils/Token";
 
-function Login() {
+function Login(value) {
+  const { pageAction } = value;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alertData, setAlertData] = useState("");
@@ -25,7 +27,11 @@ function Login() {
 
       saveUser(response.data.data);
 
-      window.location.replace(`/`);
+      if (pageAction == true) {
+        window.location.replace(`/shipping`);
+      } else {
+        window.location.replace(`/`);
+      }
     } catch (error) {
       if (error.response.status == 401) {
         setAlertData({

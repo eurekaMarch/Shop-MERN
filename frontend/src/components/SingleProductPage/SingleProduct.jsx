@@ -53,7 +53,7 @@ function SingleProduct(value) {
 
   const AddToCartHandle = () => {
     addToCart(productItem.product, amountItem);
-    navigate(`/cart`, { replace: true });
+    navigate(`/cart`);
     setAmountItem(1);
   };
 

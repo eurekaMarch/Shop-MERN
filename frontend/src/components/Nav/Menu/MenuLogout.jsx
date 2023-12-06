@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,6 +9,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function MenuLogout(value) {
   const { user, clearToken } = value;
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -17,6 +19,11 @@ function MenuLogout(value) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logoutHandle = () => {
+    clearToken();
+    navigate(`/`, { replace: true });
   };
   return (
     <Box sx={{ ml: "1rem" }}>
@@ -49,7 +56,7 @@ function MenuLogout(value) {
           fontSize: "1.4rem",
         }}
       >
-        <MenuItem onClick={clearToken}>LOGOUT</MenuItem>
+        <MenuItem onClick={logoutHandle}>LOGOUT</MenuItem>
       </Menu>
     </Box>
   );

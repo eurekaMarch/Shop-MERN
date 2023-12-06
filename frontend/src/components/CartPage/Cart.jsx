@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Box from "@mui/material/Box";
@@ -9,8 +9,15 @@ import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
 
 function Cart(value) {
-  window.scrollTo(0, 70);
-  const { cartProduct, removeFromCart, increaseQty, decreaseQty } = value;
+  const navigate = useNavigate();
+  const {
+    cartProduct,
+    removeFromCart,
+    increaseQty,
+    decreaseQty,
+    token,
+    setPageAction,
+  } = value;
 
   const totalPrice = cartProduct
     .reduce((pre, cur) => {
@@ -20,6 +27,15 @@ function Cart(value) {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
+
+  const checkOutHandler = () => {
+    if (token) {
+      navigate(`/shipping`);
+    } else {
+      navigate(`/login`, { replace: true });
+      setPageAction(true);
+    }
+  };
 
   return (
     <div>
@@ -276,20 +292,19 @@ function Cart(value) {
             </Grid>
 
             <Grid xs={12} sm={12} md={6}>
-              <Link to="/shipping">
-                <Button
-                  variant="contained"
-                  color="green2"
-                  size="normal"
-                  sx={{
-                    fontSize: "1.6rem",
-                    height: "5.5rem",
-                    width: "55%",
-                  }}
-                >
-                  Checkout
-                </Button>
-              </Link>
+              <Button
+                variant="contained"
+                color="green2"
+                size="normal"
+                onClick={checkOutHandler}
+                sx={{
+                  fontSize: "1.6rem",
+                  height: "5.5rem",
+                  width: "55%",
+                }}
+              >
+                Checkout
+              </Button>
             </Grid>
           </Grid>
         </Box>

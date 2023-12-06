@@ -4,6 +4,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
+  Navigate,
 } from "react-router-dom";
 import "./App.css";
 import Home from "./components/HomePage/Home";
@@ -30,7 +31,7 @@ function App() {
   const { token, user, clearToken } = useToken();
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
-
+  const [pageAction, setPageAction] = useState(false);
   const {
     addToCart,
     removeFromCart,
@@ -90,8 +91,16 @@ function App() {
           index
           element={<Home products={products} loading={state.loading} />}
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={!token ? <Register /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/login"
+          element={
+            !token ? <Login pageAction={pageAction} /> : <Navigate to="/" />
+          }
+        />
         <Route
           path="/products"
           element={<SingleProduct addToCart={addToCart} />}
@@ -104,6 +113,8 @@ function App() {
               removeFromCart={removeFromCart}
               increaseQty={increaseQty}
               decreaseQty={decreaseQty}
+              token={token}
+              setPageAction={setPageAction}
             />
           }
         />

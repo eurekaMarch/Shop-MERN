@@ -49,6 +49,10 @@ function CartAction() {
 
     window.localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     setCartProduct(newCartItems);
+
+    if (cartProduct.length === 1) {
+      window.localStorage.removeItem("cartItems");
+    }
   };
 
   const increaseQty = (product) => {
@@ -100,9 +104,9 @@ function CartAction() {
     setShipping(shippingAdd);
   };
 
-  const clearLocalStorage = () => {
-    window.localStorage.removeItem("cartItems");
-  };
+  // const clearLocalStorage = () => {
+  //   window.localStorage.removeItem("cartItems");
+  // };
 
   return {
     addToCart,
@@ -110,7 +114,6 @@ function CartAction() {
     cartProduct,
     increaseQty,
     decreaseQty,
-    clearLocalStorage,
     shippingAddress,
     shipping,
   };
