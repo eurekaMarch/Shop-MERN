@@ -27,6 +27,7 @@ function Shipping(value) {
     });
 
     navigate(`/payment`);
+    window.location.replace(`/payment`);
   };
 
   return (
