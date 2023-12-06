@@ -32,6 +32,7 @@ function App() {
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
   const [pageAction, setPageAction] = useState(false);
+
   const {
     addToCart,
     removeFromCart,

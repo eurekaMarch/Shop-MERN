@@ -27,7 +27,7 @@ function Login(value) {
 
       saveUser(response.data.data);
 
-      if (pageAction == true) {
+      if (pageAction === true) {
         window.location.replace(`/shipping`);
       } else {
         window.location.replace(`/`);
