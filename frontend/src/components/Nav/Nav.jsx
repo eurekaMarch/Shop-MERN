@@ -25,7 +25,7 @@ function Nav(value) {
     event.preventDefault();
 
     const filteredSearch = data.filter((element) => {
-      return element.name.toLowerCase().includes(search);
+      return element.name.toLowerCase().includes(search.toLowerCase());
     });
     setProducts(filteredSearch);
     navigate(`/`);
