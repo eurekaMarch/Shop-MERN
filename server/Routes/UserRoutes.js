@@ -2,6 +2,7 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
 import common from "../common/common.js";
+import auth from "../Middleware/Auth.js";
 
 const userRoutes = express.Router();
 
@@ -66,6 +67,31 @@ userRoutes.post(
         responseData.error = "Password invalid";
         res.status(401);
       }
+    }
+
+    res.send(responseData);
+  })
+);
+
+userRoutes.get(
+  "/profile",
+  auth,
+  asyncHandler(async (req, res) => {
+    // res.send("Profile");
+    const responseData = {};
+
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      responseData.data = {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        createdAt: user.createdAt,
+      };
+    } else {
+      responseData.error = "User not found";
+      res.status(404);
     }
 
     res.send(responseData);
