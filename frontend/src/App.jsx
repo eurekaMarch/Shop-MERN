@@ -18,7 +18,7 @@ import theme from "./Utils/theme";
 import { mongoDBApi } from "../src/Utils/axios";
 import Shipping from "./components/ShippingPage/Shipping";
 import CartAction from "./Utils/CartAction";
-import Payment from "./components/Paymentpage/Payment";
+import PlaceOrder from "./components/PlaceOrderPage/PlaceOrder";
 import useToken from "./Utils/Token";
 
 const initial = {
@@ -28,10 +28,11 @@ const initial = {
 };
 
 function App() {
-  const { token, user, clearToken } = useToken();
   const [state, setState] = useState(initial);
   const [products, setProducts] = useState([]);
   const [pageAction, setPageAction] = useState(false);
+
+  const { token, user, clearToken } = useToken();
 
   const {
     addToCart,
@@ -125,7 +126,20 @@ function App() {
             <Shipping shippingAddress={shippingAddress} shipping={shipping} />
           }
         />
-        <Route path="/payment" element={<Payment shipping={shipping} />} />
+        <Route
+          path="/placeorder"
+          element={
+            token ? (
+              <PlaceOrder
+                shipping={shipping}
+                cartProduct={cartProduct}
+                user={user}
+              />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
       </Route>
     )
   );

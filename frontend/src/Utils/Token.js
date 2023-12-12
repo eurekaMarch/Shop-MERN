@@ -26,6 +26,7 @@ function useToken() {
       if (decoded.exp - currenTime <= 0) {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("user");
+        window.location.replace(`/`);
         return { userToken: "", userData: "" };
       }
 

@@ -32,11 +32,44 @@ a {
   #Nav__cart {
     font-size: 14px;
   }
+
+  #PlaceOrder__orderDetail-icon {
+    height: 5rem;
+    width: 5rem;
+    padding: 1.6rem;
+  }
+
+  #PlaceOrder__orderDetail-text {
+    font-size: 1.2rem;
+  }
+  #PlaceOrder__orderDetail-textTitle {
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 767px) {
   #Nav__pc {
     display: none !important;
+  }
+
+  #PlaceOrder__orderDetail-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #PlaceOrder__orderDetail-text {
+    width: 88%;
+  }
+}
+
+@media (max-width: 600px) {
+  #PlaceOrder__orderDetail-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  #PlaceOrder__orderDetail-text {
+    width: 88%;
   }
 }
 

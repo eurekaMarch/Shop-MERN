@@ -26,15 +26,15 @@ function Shipping(value) {
       country,
     });
 
-    navigate(`/payment`);
-    window.location.replace(`/payment`);
+    navigate(`/placeorder`);
+    window.location.replace(`/placeorder`);
   };
 
   return (
     <Box
       sx={{
         width: "100%",
-        mt: "3rem",
+        mt: "2.5rem",
         flexGrow: 1,
       }}
     >

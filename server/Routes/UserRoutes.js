@@ -77,7 +77,6 @@ userRoutes.get(
   "/profile",
   auth,
   asyncHandler(async (req, res) => {
-    // res.send("Profile");
     const responseData = {};
 
     const user = await User.findById(req.user._id);
