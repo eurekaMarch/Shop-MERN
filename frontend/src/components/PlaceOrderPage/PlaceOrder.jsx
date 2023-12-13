@@ -59,7 +59,13 @@ function PlaceOrder(value) {
     <Box sx={{ mt: "1rem", mx: "6rem" }}>
       {/* order detail */}
 
-      <Grid container xs={12} sm={12} md={12} sx={{ bgcolor: grey[300] }}>
+      <Grid
+        container
+        xs={12}
+        sm={12}
+        md={12}
+        sx={{ bgcolor: "#f0f7e9", borderRadius: "0.6rem" }}
+      >
         <Grid xs={12} sm={4} md={4}>
           <Box
             id="PlaceOrder__orderDetail-container"
@@ -321,7 +327,7 @@ function PlaceOrder(value) {
         {/* table */}
         <Grid xs={12} sm={12} md={4}>
           <Box id="PlaceOrder__table" sx={{ ml: "8rem" }}>
-            <TableContainer component={Paper} sx={{ bgcolor: grey[100] }}>
+            <TableContainer component={Paper} sx={{ bgcolor: grey[200] }}>
               <Table aria-label="simple table">
                 <TableBody>
                   {rows.map((row) => (
