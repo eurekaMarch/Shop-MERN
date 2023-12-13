@@ -57,6 +57,8 @@ function PlaceOrder(value) {
 
   return (
     <Box sx={{ mt: "1rem", mx: "6rem" }}>
+      {/* order detail */}
+
       <Grid container xs={12} sm={12} md={12} sx={{ bgcolor: grey[300] }}>
         <Grid xs={12} sm={4} md={4}>
           <Box
@@ -176,6 +178,8 @@ function PlaceOrder(value) {
       </Grid>
 
       <Grid container xs={12} sm={12} md={12} sx={{ mt: "4rem" }}>
+        {/* product detail */}
+
         <Grid id="PlaceOrder__product" xs={12} sm={12} md={8}>
           {cartProduct.map((product) => {
             return (
@@ -314,6 +318,7 @@ function PlaceOrder(value) {
           })}
         </Grid>
 
+        {/* table */}
         <Grid xs={12} sm={12} md={4}>
           <Box id="PlaceOrder__table" sx={{ ml: "8rem" }}>
             <TableContainer component={Paper} sx={{ bgcolor: grey[100] }}>
