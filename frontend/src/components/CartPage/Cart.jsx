@@ -148,7 +148,7 @@ function Cart(value) {
                         sx={{
                           fontWeight: 500,
                           px: "2rem",
-                          textAlign: "crnter",
+                          textAlign: "center",
                         }}
                       >
                         {product.name}

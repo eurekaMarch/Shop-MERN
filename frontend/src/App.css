@@ -45,6 +45,19 @@ a {
   #PlaceOrder__orderDetail-textTitle {
     font-size: 1.4rem;
   }
+
+  #PlaceOrder__button {
+    width: 40%;
+  }
+
+  #PlaceOrder__table {
+    margin-left: 0;
+    margin-top: 4rem;
+  }
+
+  #PlaceOrder__product {
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -70,6 +83,10 @@ a {
 
   #PlaceOrder__orderDetail-text {
     width: 88%;
+  }
+
+  #PlaceOrder__qty-price {
+    margin-top: 1rem;
   }
 }
 
