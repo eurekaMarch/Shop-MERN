@@ -104,9 +104,9 @@ function CartAction() {
     setShipping(shippingAdd);
   };
 
-  // const clearLocalStorage = () => {
-  //   window.localStorage.removeItem("cartItems");
-  // };
+  const clearcartItems = () => {
+    window.localStorage.removeItem("cartItems");
+  };
 
   return {
     addToCart,
@@ -116,6 +116,7 @@ function CartAction() {
     decreaseQty,
     shippingAddress,
     shipping,
+    clearcartItems,
   };
 }
 

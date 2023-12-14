@@ -18,9 +18,18 @@ orderRoutes.post(
       res.status(400);
       return;
     } else {
-      const order = new Order(data);
+      const order = new Order({
+        user: req.user._id,
+        orderItems: data.orderItems,
+        shippingAddress: data.shippingAddress,
+        itemsPrice: data.itemsPrice,
+        taxPrice: data.taxPrice,
+        shippingPrice: data.shippingPrice,
+        totalPrice: data.totalPrice,
+      });
 
       const createOrder = await order.save();
+
       responseData.data = createOrder;
       res.status(201);
     }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -15,10 +15,12 @@ import { grey, red } from "@mui/material/colors";
 import truckPic from "../../assets/truck-solid.svg";
 import userPic from "../../assets/user-solid.svg";
 import locationPic from "../../assets/location-dot-solid.svg";
+import { mongoDBApi } from "../../Utils/axios";
 
 function PlaceOrder(value) {
   window.scrollTo(0, 100);
-  const { shipping, cartProduct, user } = value;
+  const { shipping, cartProduct, user, token } = value;
+  const navigate = useNavigate();
 
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
@@ -54,6 +56,21 @@ function PlaceOrder(value) {
     createData("Tax", "$" + cartProduct.taxPrice),
     createData("Total", "$" + cartProduct.totalPrice),
   ];
+
+  const placeOrderHandler = async (data) => {
+    try {
+      await mongoDBApi.post(`orders`, data, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+
+      // clearcartItems();
+      navigate(`/order`);
+    } catch (error) {
+      console.log(error.response.data.error);
+    }
+  };
 
   return (
     <Box sx={{ mt: "1rem", mx: "6rem" }}>
@@ -365,6 +382,16 @@ function PlaceOrder(value) {
                   width: "100%",
                   fontWeight: 500,
                 }}
+                onClick={() =>
+                  placeOrderHandler({
+                    orderItems: cartProduct,
+                    shippingAddress: shipping,
+                    itemsPrice: cartProduct.itemsPrice,
+                    shippingPrice: cartProduct.shippingPrice,
+                    taxPrice: cartProduct.taxPrice,
+                    totalPrice: cartProduct.totalPrice,
+                  })
+                }
               >
                 Place Order
               </Button>
