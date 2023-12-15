@@ -61,13 +61,13 @@ function PlaceOrder(value) {
 
   const placeOrderHandler = async (data) => {
     try {
-      await mongoDBApi.post(`orders`, data, {
+      const response = await mongoDBApi.post(`orders`, data, {
         headers: {
           Authorization: `bearer ${token}`,
         },
       });
 
-      setSuccess(true);
+      setSuccess(response.data.success);
     } catch (error) {
       console.log(error.response.data.error);
     }
