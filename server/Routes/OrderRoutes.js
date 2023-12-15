@@ -38,4 +38,28 @@ orderRoutes.post(
   })
 );
 
+orderRoutes.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const orders = await Order.find();
+    res.json(orders);
+  })
+);
+
+orderRoutes.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const orders = await Order.findById(req.params.id).populate(
+      "user",
+      "username email"
+    );
+    if (orders) {
+      res.json(orders);
+    } else {
+      res.status(404);
+      throw new Error("Order not found");
+    }
+  })
+);
+
 export default orderRoutes;

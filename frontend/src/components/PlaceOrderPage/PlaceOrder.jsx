@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
@@ -19,7 +20,8 @@ import { mongoDBApi } from "../../Utils/axios";
 
 function PlaceOrder(value) {
   window.scrollTo(0, 100);
-  const { shipping, cartProduct, user, token } = value;
+  const { shipping, cartProduct, user, token, clearcartItems } = value;
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const addDecimals = (num) => {
@@ -65,12 +67,33 @@ function PlaceOrder(value) {
         },
       });
 
-      // clearcartItems();
-      navigate(`/order`);
+      setSuccess(true);
     } catch (error) {
       console.log(error.response.data.error);
     }
   };
+
+  const fetchOrder = async () => {
+    try {
+      const orderResponse = await mongoDBApi.get("orders");
+
+      const orders = await orderResponse?.data;
+
+      clearcartItems();
+
+      navigate(`/order?id=${orders[orders.length - 1]._id}`);
+
+      window.location.replace(`/order?id=${orders[orders.length - 1]._id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (success === true) {
+      fetchOrder();
+    }
+  });
 
   return (
     <Box sx={{ mt: "1rem", mx: "6rem" }}>
@@ -203,148 +226,172 @@ function PlaceOrder(value) {
       <Grid container xs={12} sm={12} md={12} sx={{ mt: "4rem" }}>
         {/* product detail */}
 
-        <Grid id="PlaceOrder__product" xs={12} sm={12} md={8}>
-          {cartProduct.map((product) => {
-            return (
-              <Box key={product._id}>
-                <Card
-                  sx={{
-                    mb: "2rem",
-                    py: "2rem",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Grid
-                    container
-                    xs={12}
-                    sm={12}
-                    md={12}
+        {cartProduct.length === 0 ? (
+          <Grid xs={12} sm={12} md={8}>
+            <Box
+              sx={{
+                textAlign: "center",
+                bgcolor: "#CFF4FC",
+                py: "2rem",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  color: grey[600],
+                }}
+              >
+                Your cart is empty
+              </Typography>
+            </Box>
+          </Grid>
+        ) : (
+          <Grid id="PlaceOrder__product" xs={12} sm={12} md={8}>
+            {cartProduct.map((product) => {
+              return (
+                <Box key={product._id}>
+                  <Card
                     sx={{
+                      mb: "2rem",
+                      py: "2rem",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
                     <Grid
-                      xs={4}
-                      sm={2}
-                      md={2}
+                      container
+                      xs={12}
+                      sm={12}
+                      md={12}
                       sx={{
                         display: "flex",
                         justifyContent: "center",
-                        px: "1rem",
+                        alignItems: "center",
                       }}
                     >
-                      <CardMedia
-                        component="img"
-                        image={product.image}
-                        sx={{ height: "12rem", objectFit: "contain" }}
-                      />
-                    </Grid>
+                      <Grid
+                        xs={4}
+                        sm={2}
+                        md={2}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          px: "1rem",
+                        }}
+                      >
+                        <CardMedia
+                          component="img"
+                          image={product.image}
+                          sx={{ height: "12rem", objectFit: "contain" }}
+                        />
+                      </Grid>
 
-                    <Grid
-                      xs={8}
-                      sm={4}
-                      md={6}
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Link to={`/products?id=${product._id}`}>
+                      <Grid
+                        xs={8}
+                        sm={4}
+                        md={6}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Link to={`/products?id=${product._id}`}>
+                          <Typography
+                            sx={{
+                              fontWeight: 500,
+                              px: "1rem",
+                              pb: "1rem",
+                              textAlign: "center",
+                            }}
+                          >
+                            {product.name}
+                          </Typography>
+                        </Link>
+                      </Grid>
+
+                      <Grid
+                        id="PlaceOrder__qty-price"
+                        xs={6}
+                        sm={3}
+                        md={2}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontWeight: 400,
+                            px: "1rem",
+                            mb: "1rem",
+                            textAlign: "center",
+                          }}
+                        >
+                          QUANTITY
+                        </Typography>
+
                         <Typography
                           sx={{
                             fontWeight: 500,
                             px: "1rem",
-                            pb: "1rem",
                             textAlign: "center",
                           }}
                         >
-                          {product.name}
+                          {product.qty}
                         </Typography>
-                      </Link>
+                      </Grid>
+
+                      <Grid
+                        id="PlaceOrder__qty-price"
+                        xs={6}
+                        sm={3}
+                        md={2}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontWeight: 400,
+                            px: "1rem",
+                            mb: "1rem",
+                            textAlign: "center",
+                          }}
+                        >
+                          SUBTOTAL
+                        </Typography>
+
+                        <Typography
+                          sx={{
+                            fontWeight: 500,
+                            px: "1rem",
+                            textAlign: "center",
+                            color: red[500],
+                          }}
+                        >
+                          ${(product.qty * product.price).toFixed(2)}
+                        </Typography>
+                      </Grid>
                     </Grid>
-
-                    <Grid
-                      id="PlaceOrder__qty-price"
-                      xs={6}
-                      sm={3}
-                      md={2}
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: 400,
-                          px: "1rem",
-                          mb: "1rem",
-                          textAlign: "center",
-                        }}
-                      >
-                        QUANTITY
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          fontWeight: 500,
-                          px: "1rem",
-                          textAlign: "center",
-                        }}
-                      >
-                        {product.qty}
-                      </Typography>
-                    </Grid>
-
-                    <Grid
-                      id="PlaceOrder__qty-price"
-                      xs={6}
-                      sm={3}
-                      md={2}
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: 400,
-                          px: "1rem",
-                          mb: "1rem",
-                          textAlign: "center",
-                        }}
-                      >
-                        SUBTOTAL
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          fontWeight: 500,
-                          px: "1rem",
-                          textAlign: "center",
-                          color: red[500],
-                        }}
-                      >
-                        ${(product.qty * product.price).toFixed(2)}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Card>
-              </Box>
-            );
-          })}
-        </Grid>
+                  </Card>
+                </Box>
+              );
+            })}
+          </Grid>
+        )}
 
         {/* table */}
         <Grid xs={12} sm={12} md={4}>
           <Box id="PlaceOrder__table" sx={{ ml: "8rem" }}>
-            <TableContainer component={Paper} sx={{ bgcolor: grey[200] }}>
+            <TableContainer
+              component={Paper}
+              sx={{ bgcolor: grey[200], mb: "4rem" }}
+            >
               <Table aria-label="simple table">
                 <TableBody>
                   {rows.map((row) => (
@@ -371,31 +418,35 @@ function PlaceOrder(value) {
               </Table>
             </TableContainer>
 
-            <Box sx={{ display: "flex", justifyContent: "center", my: "4rem" }}>
-              <Button
-                id="PlaceOrder__button"
-                variant="contained"
-                color="green"
-                sx={{
-                  fontSize: "1.6rem",
-                  height: "5rem",
-                  width: "100%",
-                  fontWeight: 500,
-                }}
-                onClick={() =>
-                  placeOrderHandler({
-                    orderItems: cartProduct,
-                    shippingAddress: shipping,
-                    itemsPrice: cartProduct.itemsPrice,
-                    shippingPrice: cartProduct.shippingPrice,
-                    taxPrice: cartProduct.taxPrice,
-                    totalPrice: cartProduct.totalPrice,
-                  })
-                }
+            {cartProduct.length === 0 ? null : (
+              <Box
+                sx={{ display: "flex", justifyContent: "center", mb: "4rem" }}
               >
-                Place Order
-              </Button>
-            </Box>
+                <Button
+                  id="PlaceOrder__button"
+                  variant="contained"
+                  color="green"
+                  sx={{
+                    fontSize: "1.6rem",
+                    height: "5rem",
+                    width: "100%",
+                    fontWeight: 500,
+                  }}
+                  onClick={() =>
+                    placeOrderHandler({
+                      orderItems: cartProduct,
+                      shippingAddress: shipping,
+                      itemsPrice: cartProduct.itemsPrice,
+                      shippingPrice: cartProduct.shippingPrice,
+                      taxPrice: cartProduct.taxPrice,
+                      totalPrice: cartProduct.totalPrice,
+                    })
+                  }
+                >
+                  Place Order
+                </Button>
+              </Box>
+            )}
           </Box>
         </Grid>
       </Grid>
