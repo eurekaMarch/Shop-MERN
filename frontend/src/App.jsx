@@ -146,7 +146,7 @@ function App() {
         />
         <Route
           path="/order"
-          element={token ? <OrderPage /> : <Navigate to="/" />}
+          element={token ? <OrderPage token={token} /> : <Navigate to="/" />}
         />
       </Route>
     )

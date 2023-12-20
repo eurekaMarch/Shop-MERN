@@ -41,6 +41,7 @@ orderRoutes.post(
 
 orderRoutes.get(
   "/",
+  auth,
   asyncHandler(async (req, res) => {
     const orders = await Order.find();
     res.json(orders);
@@ -49,6 +50,7 @@ orderRoutes.get(
 
 orderRoutes.get(
   "/:id",
+  auth,
   asyncHandler(async (req, res) => {
     const orders = await Order.findById(req.params.id).populate(
       "user",

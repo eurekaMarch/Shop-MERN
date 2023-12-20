@@ -75,7 +75,11 @@ function PlaceOrder(value) {
 
   const fetchOrder = async () => {
     try {
-      const orderResponse = await mongoDBApi.get("orders");
+      const orderResponse = await mongoDBApi.get("orders", {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
 
       const orders = await orderResponse?.data;
 
