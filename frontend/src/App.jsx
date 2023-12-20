@@ -13,7 +13,7 @@ import Register from "./components/LoginPage/Register";
 import Login from "./components/LoginPage/Login";
 import SingleProduct from "./components/SingleProductPage/SingleProduct";
 import Cart from "./components/CartPage/Cart";
-import OrderPage from "./components/OrderPage/OrderPage";
+import Order from "./components/OrderPage/Order";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Utils/theme";
 import { mongoDBApi } from "../src/Utils/axios";
@@ -146,7 +146,7 @@ function App() {
         />
         <Route
           path="/order"
-          element={token ? <OrderPage token={token} /> : <Navigate to="/" />}
+          element={token ? <Order token={token} /> : <Navigate to="/" />}
         />
       </Route>
     )

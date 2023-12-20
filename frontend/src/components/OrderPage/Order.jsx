@@ -28,7 +28,7 @@ const initial = {
   error: null,
 };
 
-function OrderPage(value) {
+function Order(value) {
   window.scrollTo(0, 0);
 
   const { token } = value;
@@ -502,4 +502,4 @@ function OrderPage(value) {
   );
 }
 
-export default OrderPage;
+export default Order;
