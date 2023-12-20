@@ -71,10 +71,10 @@ function OrderPage(value) {
   };
 
   const rows = [
-    createData("Products", "$" + ordertItem.order.itemsPrice.toFixed(2)),
-    createData("Shipping", "$" + ordertItem.order.shippingPrice.toFixed(2)),
-    createData("Tax", "$" + ordertItem.order.taxPrice.toFixed(2)),
-    createData("Total", "$" + ordertItem.order.totalPrice.toFixed(2)),
+    createData("Products", "$" + ordertItem.order.itemsPrice?.toFixed(2)),
+    createData("Shipping", "$" + ordertItem.order.shippingPrice?.toFixed(2)),
+    createData("Tax", "$" + ordertItem.order.taxPrice?.toFixed(2)),
+    createData("Total", "$" + ordertItem.order.totalPrice?.toFixed(2)),
   ];
 
   useEffect(() => {
