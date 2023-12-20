@@ -120,7 +120,7 @@ function SingleProduct(value) {
                 gutterBottom
                 sx={{ color: red[500], fontWeight: "bold", fontSize: "1.8rem" }}
               >
-                $ {productItem.product.price}
+                ${productItem.product.price}
               </Typography>
 
               <Typography

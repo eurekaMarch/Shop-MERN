@@ -35,7 +35,7 @@ function Products(value) {
                 {product.name}
               </Typography>
               <Typography sx={{ fontWeight: "bold", fontSize: "1.3rem" }}>
-                $ {product.price}
+                ${product.price}
               </Typography>
             </CardContent>
           </Card>

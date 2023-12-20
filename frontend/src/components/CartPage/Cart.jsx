@@ -231,7 +231,7 @@ function Cart(value) {
                       }}
                     >
                       <Typography sx={{ fontWeight: 500, color: red[500] }}>
-                        $ {product.price}
+                        ${product.price}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -256,7 +256,7 @@ function Cart(value) {
               component="span"
               sx={{ ml: "1rem", fontWeight: "bold", color: red[500] }}
             >
-              $ {totalPrice}
+              ${totalPrice}
             </Box>
           </Box>
 
