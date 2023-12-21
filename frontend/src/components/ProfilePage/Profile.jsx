@@ -147,6 +147,7 @@ function Profile(values) {
                         iconPosition="end"
                         label="Orders List"
                         value="2"
+                        sx={{ minHeight: "48px" }}
                       />
                     </TabList>
                   </Box>
