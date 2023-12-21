@@ -15,6 +15,8 @@ import { grey } from "@mui/material/colors";
 import coverPic from "../../assets/Gust_Profile_CoverPhoto.png";
 import userPic from "../../assets/user.png";
 import moment from "moment-timezone";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
 
 moment.tz.setDefault("Asia/Bangkok");
 
@@ -140,7 +142,12 @@ function Profile(values) {
                           borderColor: "divider",
                         }}
                       />
-                      <Tab label="Orders List" value="2" />
+                      <Tab
+                        icon={<StyledBadge badgeContent={5} color="red500" />}
+                        iconPosition="end"
+                        label="Orders List"
+                        value="2"
+                      />
                     </TabList>
                   </Box>
                 </Paper>
@@ -163,3 +170,9 @@ function Profile(values) {
 }
 
 export default Profile;
+
+const StyledBadge = styled(Badge)(() => ({
+  "& .MuiBadge-badge": {
+    right: -10,
+  },
+}));
