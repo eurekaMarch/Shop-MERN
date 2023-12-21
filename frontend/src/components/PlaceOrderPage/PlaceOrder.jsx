@@ -119,8 +119,9 @@ function PlaceOrder(value) {
               mx: "2rem",
             }}
           >
-            <Box
+            <Paper
               id="PlaceOrder__orderDetail-icon"
+              elevation={3}
               component="img"
               src={userPic}
               sx={{
@@ -132,7 +133,7 @@ function PlaceOrder(value) {
                 mr: "2rem",
                 mb: "1rem",
               }}
-            ></Box>
+            ></Paper>
 
             <Box id="PlaceOrder__orderDetail-text" sx={{ mr: "2rem" }}>
               <Typography
@@ -156,8 +157,9 @@ function PlaceOrder(value) {
               mx: "2rem",
             }}
           >
-            <Box
+            <Paper
               id="PlaceOrder__orderDetail-icon"
+              elevation={3}
               component="img"
               src={truckPic}
               sx={{
@@ -169,7 +171,7 @@ function PlaceOrder(value) {
                 mr: "2rem",
                 mb: "1rem",
               }}
-            ></Box>
+            ></Paper>
 
             <Box id="PlaceOrder__orderDetail-text" sx={{ mr: "2rem" }}>
               <Typography
@@ -193,8 +195,9 @@ function PlaceOrder(value) {
               width: "100%",
             }}
           >
-            <Box
+            <Paper
               id="PlaceOrder__orderDetail-icon"
+              elevation={3}
               component="img"
               src={locationPic}
               sx={{
@@ -206,7 +209,7 @@ function PlaceOrder(value) {
                 mr: "2rem",
                 mb: "1rem",
               }}
-            ></Box>
+            ></Paper>
 
             <Box
               id="PlaceOrder__orderDetail-text"

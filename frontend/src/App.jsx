@@ -14,12 +14,13 @@ import Login from "./components/LoginPage/Login";
 import SingleProduct from "./components/SingleProductPage/SingleProduct";
 import Cart from "./components/CartPage/Cart";
 import Order from "./components/OrderPage/Order";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./Utils/theme";
-import { mongoDBApi } from "../src/Utils/axios";
 import Shipping from "./components/ShippingPage/Shipping";
 import CartAction from "./Utils/CartAction";
 import PlaceOrder from "./components/PlaceOrderPage/PlaceOrder";
+import Profile from "./components/ProfilePage/Profile";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./Utils/theme";
+import { mongoDBApi } from "../src/Utils/axios";
 import useToken from "./Utils/Token";
 
 const initial = {
@@ -104,6 +105,10 @@ function App() {
           element={
             !token ? <Login pageAction={pageAction} /> : <Navigate to="/" />
           }
+        />
+        <Route
+          path="/profile"
+          element={token ? <Profile token={token} /> : <Navigate to="/" />}
         />
         <Route
           path="/products"

@@ -93,6 +93,10 @@ a {
   #Order__qty-price {
     margin-top: 1rem;
   }
+
+  #Profile__img {
+    width: 8rem;
+  }
 }
 
 @media (max-width: 400px) {
@@ -107,6 +111,10 @@ a {
   #Home__cardMedia {
     width: 10rem;
     height: 10rem;
+  }
+
+  #Profile__img {
+    width: 5rem;
   }
 }
 

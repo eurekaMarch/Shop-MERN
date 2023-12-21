@@ -105,8 +105,9 @@ function Order(value) {
                   mx: "2rem",
                 }}
               >
-                <Box
+                <Paper
                   id="Order__orderDetail-icon"
+                  elevation={3}
                   component="img"
                   src={userPic}
                   sx={{
@@ -118,7 +119,7 @@ function Order(value) {
                     mr: "2rem",
                     mb: "1rem",
                   }}
-                ></Box>
+                ></Paper>
 
                 <Box id="Order__orderDetail-text" sx={{ mr: "2rem" }}>
                   <Typography
@@ -142,8 +143,9 @@ function Order(value) {
                   mx: "2rem",
                 }}
               >
-                <Box
+                <Paper
                   id="Order__orderDetail-icon"
+                  elevation={3}
                   component="img"
                   src={truckPic}
                   sx={{
@@ -155,7 +157,7 @@ function Order(value) {
                     mr: "2rem",
                     mb: "1rem",
                   }}
-                ></Box>
+                ></Paper>
 
                 <Box id="Order__orderDetail-text">
                   <Typography
@@ -214,8 +216,9 @@ function Order(value) {
                   width: "100%",
                 }}
               >
-                <Box
+                <Paper
                   id="Order__orderDetail-icon"
+                  elevation={3}
                   component="img"
                   src={locationPic}
                   sx={{
@@ -227,7 +230,7 @@ function Order(value) {
                     mr: "2rem",
                     mb: "1rem",
                   }}
-                ></Box>
+                ></Paper>
 
                 <Box
                   id="Order__orderDetail-text"
