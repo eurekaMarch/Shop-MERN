@@ -7,15 +7,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { red, grey } from "@mui/material/colors";
+import useToken from "../../Utils/Token";
 
 function Cart(value) {
   const navigate = useNavigate();
+  const { token } = useToken();
   const {
     cartProduct,
     removeFromCart,
     increaseQty,
     decreaseQty,
-    token,
     setPageAction,
   } = value;
 

@@ -17,10 +17,12 @@ import truckPic from "../../assets/truck-solid.svg";
 import userPic from "../../assets/user-solid.svg";
 import locationPic from "../../assets/location-dot-solid.svg";
 import { mongoDBApi } from "../../Utils/axios";
+import useToken from "../../Utils/Token";
 
 function PlaceOrder(value) {
   window.scrollTo(0, 100);
-  const { shipping, cartProduct, user, token, clearcartItems } = value;
+  const { user, token } = useToken();
+  const { shipping, cartProduct, clearcartItems } = value;
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
@@ -85,9 +87,8 @@ function PlaceOrder(value) {
 
       clearcartItems();
 
-      navigate(`/order?id=${orders[orders.length - 1]._id}`);
-
       window.location.replace(`/order?id=${orders[orders.length - 1]._id}`);
+      navigate(`/order?id=${orders[orders.length - 1]._id}`);
     } catch (error) {
       console.log(error);
     }

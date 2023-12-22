@@ -17,6 +17,7 @@ import userPic from "../../assets/user.png";
 import moment from "moment-timezone";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
+import useToken from "../../Utils/Token";
 
 moment.tz.setDefault("Asia/Bangkok");
 
@@ -26,9 +27,9 @@ const initial = {
   error: null,
 };
 
-function Profile(values) {
-  const { token } = values;
-  const [getprofile, setGetprofile] = useState(initial);
+function Profile() {
+  const { token } = useToken();
+  const [getProfile, setGetProfile] = useState(initial);
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -36,7 +37,7 @@ function Profile(values) {
   };
 
   const fetchProfile = async () => {
-    setGetprofile((prev) => ({
+    setGetProfile((prev) => ({
       ...prev,
       loading: true,
     }));
@@ -55,7 +56,7 @@ function Profile(values) {
       fetchError = error;
     }
 
-    setGetprofile((prev) => ({
+    setGetProfile((prev) => ({
       ...prev,
       profile,
       loading: false,
@@ -69,7 +70,7 @@ function Profile(values) {
 
   return (
     <div>
-      {getprofile.loading ? (
+      {getProfile.loading ? (
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           <CircularProgress color="success" />
         </Box>
@@ -87,7 +88,7 @@ function Profile(values) {
                     }}
                   ></Box>
 
-                  <Box sx={{ pt: "1.5rem", height: "12rem" }}>
+                  <Box sx={{ pt: "1.5rem", height: "15rem" }}>
                     <Paper
                       id="Profile__img"
                       component="img"
@@ -107,11 +108,11 @@ function Profile(values) {
                       <Grid xs={7} sm={6} md={7}>
                         <Box>
                           <Typography gutterBottom sx={{ fontWeight: "bold" }}>
-                            {getprofile.profile.data?.username}
+                            {getProfile.profile.data?.username}
                           </Typography>
                           <Typography sx={{ wordWrap: "break-word" }}>
                             Joined{" "}
-                            {moment(getprofile.profile.data?.createdAt).format(
+                            {moment(getProfile.profile.data?.createdAt).format(
                               "D MMMM, YYYY"
                             )}
                           </Typography>
@@ -126,7 +127,7 @@ function Profile(values) {
                       variant="fullWidth"
                       sx={{
                         "& button.Mui-selected": {
-                          bgcolor: "#f0f7e9",
+                          bgcolor: "#EDF7ED",
                           color: grey[900],
                         },
                       }}
@@ -140,6 +141,7 @@ function Profile(values) {
                           borderBottom: 1,
                           borderTop: 1,
                           borderColor: "divider",
+                          minHeight: "50px",
                         }}
                       />
                       <Tab
@@ -147,7 +149,7 @@ function Profile(values) {
                         iconPosition="end"
                         label="Orders List"
                         value="2"
-                        sx={{ minHeight: "48px" }}
+                        sx={{ minHeight: "50px" }}
                       />
                     </TabList>
                   </Box>
@@ -158,8 +160,9 @@ function Profile(values) {
                 <TabPanel value="1">
                   <ProfileSetting />
                 </TabPanel>
+
                 <TabPanel value="2">
-                  <OrderList />
+                  <OrderList token={token} />
                 </TabPanel>
               </Grid>
             </Grid>

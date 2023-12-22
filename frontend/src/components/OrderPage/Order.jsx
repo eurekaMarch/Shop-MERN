@@ -19,6 +19,7 @@ import truckPic from "../../assets/truck-solid.svg";
 import userPic from "../../assets/user-solid.svg";
 import locationPic from "../../assets/location-dot-solid.svg";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import useToken from "../../Utils/Token";
 
 moment.tz.setDefault("Asia/Bangkok");
 
@@ -28,10 +29,10 @@ const initial = {
   error: null,
 };
 
-function Order(value) {
+function Order() {
   window.scrollTo(0, 0);
 
-  const { token } = value;
+  const { token } = useToken();
   const [ordertItem, setOrderItem] = useState(initial);
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");

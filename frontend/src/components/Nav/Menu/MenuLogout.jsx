@@ -22,6 +22,7 @@ function MenuLogout(value) {
   };
 
   const profileHandle = () => {
+    window.location.replace(`/profile`);
     navigate(`/profile`);
   };
 

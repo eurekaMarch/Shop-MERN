@@ -34,7 +34,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [pageAction, setPageAction] = useState(false);
 
-  const { token, user, clearToken } = useToken();
+  const { token } = useToken();
 
   const {
     addToCart,
@@ -86,9 +86,6 @@ function App() {
             data={state.data}
             setProducts={setProducts}
             cartProduct={cartProduct}
-            token={token}
-            user={user}
-            clearToken={clearToken}
           />
         }
       >
@@ -108,7 +105,7 @@ function App() {
         />
         <Route
           path="/profile"
-          element={token ? <Profile token={token} /> : <Navigate to="/" />}
+          element={token ? <Profile /> : <Navigate to="/" />}
         />
         <Route
           path="/products"
@@ -122,7 +119,6 @@ function App() {
               removeFromCart={removeFromCart}
               increaseQty={increaseQty}
               decreaseQty={decreaseQty}
-              token={token}
               setPageAction={setPageAction}
             />
           }
@@ -140,8 +136,6 @@ function App() {
               <PlaceOrder
                 shipping={shipping}
                 cartProduct={cartProduct}
-                user={user}
-                token={token}
                 clearcartItems={clearcartItems}
               />
             ) : (
@@ -151,7 +145,7 @@ function App() {
         />
         <Route
           path="/order"
-          element={token ? <Order token={token} /> : <Navigate to="/" />}
+          element={token ? <Order /> : <Navigate to="/" />}
         />
       </Route>
     )

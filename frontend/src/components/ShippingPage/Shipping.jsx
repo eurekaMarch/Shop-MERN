@@ -26,8 +26,8 @@ function Shipping(value) {
       country,
     });
 
-    navigate(`/placeorder`);
     window.location.replace(`/placeorder`);
+    navigate(`/placeorder`);
   };
 
   return (

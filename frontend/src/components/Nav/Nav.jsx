@@ -11,9 +11,12 @@ import { styled } from "@mui/system";
 import { red, grey } from "@mui/material/colors";
 import MenuLogout from "./Menu/MenuLogout";
 import MenuLogin from "./Menu/MenuLogin";
+import useToken from "../../Utils/Token";
 
 function Nav(value) {
-  const { data, setProducts, cartProduct, token, user, clearToken } = value;
+  const { data, setProducts, cartProduct } = value;
+
+  const { token, user, clearToken } = useToken();
 
   const [search, setSearch] = useState("");
 

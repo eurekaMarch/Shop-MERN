@@ -97,4 +97,43 @@ userRoutes.get(
   })
 );
 
+userRoutes.put(
+  "/profile",
+  auth,
+  asyncHandler(async (req, res) => {
+    const data = req.body;
+    const responseData = {};
+
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      user.username = data.username || user.username;
+      user.email = data.email || user.email;
+
+      if (data.password) {
+        user.password = data.password;
+      }
+
+      const updatedUser = await user.save();
+      const tokenObj = { _id: updatedUser._id };
+
+      responseData.success = true;
+
+      responseData.data = {
+        _id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        createdAt: updatedUser.createdAt,
+      };
+
+      responseData.token = await common.commonService.generateToken(tokenObj);
+    } else {
+      responseData.error = "User not found";
+      res.status(404);
+    }
+
+    res.send(responseData);
+  })
+);
+
 export default userRoutes;
