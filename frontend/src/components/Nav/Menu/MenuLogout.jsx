@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,7 +8,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function MenuLogout(value) {
   const { user, clearToken } = value;
-  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -22,8 +20,7 @@ function MenuLogout(value) {
   };
 
   const profileHandle = () => {
-    // window.location.replace(`/profile`);
-    navigate(`/profile`);
+    window.location.replace(`/profile`);
   };
 
   const logoutHandle = () => {

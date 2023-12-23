@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
@@ -7,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function MenuLogin() {
-  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -20,11 +18,11 @@ function MenuLogin() {
   };
 
   const handleLogin = () => {
-    navigate(`/login`, { replace: true });
+    window.location.replace(`/login`);
   };
 
   const handleRegister = () => {
-    navigate(`/register`, { replace: true });
+    window.location.replace(`/register`);
   };
   return (
     <Box>
