@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,6 +9,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function MenuLogout(value) {
   const { user, clearToken } = value;
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -20,10 +22,12 @@ function MenuLogout(value) {
   };
 
   const profileHandle = () => {
-    window.location.replace(`/profile`);
+    handleClose();
+    navigate(`/profile`);
   };
 
   const logoutHandle = () => {
+    handleClose();
     clearToken();
     window.location.replace(`/`);
   };
@@ -31,8 +35,6 @@ function MenuLogout(value) {
   return (
     <Box sx={{ ml: "1rem" }}>
       <Button
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
@@ -48,13 +50,9 @@ function MenuLogout(value) {
         <Typography> Hi, {user.username}</Typography>
       </Button>
       <Menu
-        id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
         sx={{
           fontSize: "1.4rem",
         }}

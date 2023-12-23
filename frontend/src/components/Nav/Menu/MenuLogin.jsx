@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
@@ -6,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function MenuLogin() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -18,17 +20,17 @@ function MenuLogin() {
   };
 
   const handleLogin = () => {
-    window.location.replace(`/login`);
+    handleClose();
+    navigate(`/login`);
   };
 
   const handleRegister = () => {
-    window.location.replace(`/register`);
+    handleClose();
+    navigate(`/register`);
   };
   return (
     <Box>
       <Button
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
@@ -43,13 +45,9 @@ function MenuLogin() {
         <i className="fa-solid fa-user"></i>
       </Button>
       <Menu
-        id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
         sx={{
           fontSize: "1.4rem",
         }}
