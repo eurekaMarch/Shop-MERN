@@ -186,7 +186,7 @@ function Profile() {
                 </TabPanel>
 
                 <TabPanel value="2">
-                  <OrderList orders={getOrder} />
+                  <OrderList getOrder={getOrder} />
                 </TabPanel>
               </Grid>
             </Grid>

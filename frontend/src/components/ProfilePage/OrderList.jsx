@@ -15,11 +15,11 @@ import moment from "moment-timezone";
 moment.tz.setDefault("Asia/Bangkok");
 
 function OrderList(value) {
-  const { orders } = value;
+  const { getOrder } = value;
 
   return (
     <Box>
-      {orders.length === 0 ? (
+      {getOrder.length === 0 ? (
         <Box
           sx={{
             mt: "6rem",
@@ -70,7 +70,7 @@ function OrderList(value) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((row) => (
+              {getOrder.map((row) => (
                 <TableRow
                   key={row._id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

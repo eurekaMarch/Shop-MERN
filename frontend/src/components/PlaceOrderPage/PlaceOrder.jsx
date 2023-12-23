@@ -87,7 +87,6 @@ function PlaceOrder(value) {
 
       clearcartItems();
 
-      window.location.replace(`/order?id=${orders[orders.length - 1]._id}`);
       navigate(`/order?id=${orders[orders.length - 1]._id}`);
     } catch (error) {
       console.log(error);

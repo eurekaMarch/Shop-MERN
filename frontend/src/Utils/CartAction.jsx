@@ -106,6 +106,7 @@ function CartAction() {
 
   const clearcartItems = () => {
     window.localStorage.removeItem("cartItems");
+    setCartProduct([]);
   };
 
   return {
