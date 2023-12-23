@@ -31,6 +31,7 @@ function Profile() {
   const { token } = useToken();
   const [getProfile, setGetProfile] = useState(initial);
   const [value, setValue] = useState("1");
+  const [getOrder, setGetOrder] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,8 +65,26 @@ function Profile() {
     }));
   };
 
+  const fetchOrder = async () => {
+    let orders;
+
+    try {
+      const orderResponse = await mongoDBApi.get("orders", {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+      orders = await orderResponse?.data;
+    } catch (error) {
+      console.log(error);
+    }
+
+    setGetOrder(orders);
+  };
+
   useEffect(() => {
     fetchProfile();
+    fetchOrder();
   }, []);
 
   return (
@@ -145,7 +164,12 @@ function Profile() {
                         }}
                       />
                       <Tab
-                        icon={<StyledBadge badgeContent={5} color="red500" />}
+                        icon={
+                          <StyledBadge
+                            badgeContent={getOrder.length}
+                            color="red500"
+                          />
+                        }
                         iconPosition="end"
                         label="Orders List"
                         value="2"
@@ -162,7 +186,7 @@ function Profile() {
                 </TabPanel>
 
                 <TabPanel value="2">
-                  <OrderList token={token} />
+                  <OrderList orders={getOrder} />
                 </TabPanel>
               </Grid>
             </Grid>

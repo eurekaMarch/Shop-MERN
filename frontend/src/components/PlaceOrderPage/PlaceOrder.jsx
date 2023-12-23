@@ -400,7 +400,7 @@ function PlaceOrder(value) {
               component={Paper}
               sx={{ bgcolor: grey[200], mb: "4rem" }}
             >
-              <Table aria-label="simple table">
+              <Table>
                 <TableBody>
                   {rows.map((row) => (
                     <TableRow
